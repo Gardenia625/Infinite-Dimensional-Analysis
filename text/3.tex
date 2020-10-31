@@ -1,0 +1,98 @@
+\section{多项式}
+我们用 $\nn^{(\nn)}$ 表示只有有限项非零的非负整数数列. 对每个 $m\in\nn$, 令
+\[\nn^m\dy\jh{\alpha\in\nn^{(\nn)}}{\alpha=\xk{\alpha_1,\dots,\alpha_m,0,\dots,0,\dots},\,\alpha_i\in\nn,\,1\leq 1\leq m},\]
+则有
+\[\nn^{\xk{\nn}}=\bigcup_{m=1}^\infty\nn^m.\]
+\begin{definition}[单项式]
+令 $\mathbf{Z}\dy\xk{z_k}=\xk{x_k+\xs y_k}\in\cc^\infty$, 定义 $\cc^\infty$ 上的单项式为如下函数
+\[\mathbf{Z}^\alpha\mean{\mathbf{Z}}{}^\beta\dy z_1^{\alpha_1}\mean{z}{}_1^{\beta_1}\cdots z_2^{\alpha_2}\mean{z}{}_2^{\beta_2}\dots z_m^{\alpha_m}\mean{z}{}_m^{\beta_m},\]
+其中 $\alpha=\xk{\alpha_i},\beta=\xk{\beta_i}\in\nn^m$.
+\end{definition}
+
+注意 $\cc^\infty$ 上的单项式也可视作 $\lp$ 或 $\cc^m$ 上的函数.\par
+令 $P\dy\Span\jh{\mathbf{Z}^\alpha\mean{\mathbf{Z}}{}^\beta}{\alpha,\beta\in\nn^{\xk{\nn}}}$.\par
+令 $P_m\dy\Span\jh{\mathbf{Z}^\alpha\mean{\mathbf{Z}}{}^\beta}{\alpha,\beta\in\nn^m}$, $m\in\nn$.
+\begin{proposition}
+对每个 $p\in[1,+\infty)$, $P=\bigcup_{m=1}^\infty P_m$, $P$ 在 $L^2\xk{\lp,\PP}$ 中稠密且对每个 $n\in\nn$, $P_n$ 在 $L^2\xk{\cc^n,\mathcal{N}^n}$ 中稠密. 同时 $L^2\xk{\lp,\PP}$ 与 $L^2\xk{\cc^n,\mathcal{N}^n}$ 都为可分 Hilbert 空间.
+\end{proposition}
+\begin{proof}
+采用反证法. 假设 $P$ 在 $L^2(\lp,\PP)$ 中不稠密, 则存在非零 $g\in L^2\xk{\lp,\PP}$, 使得 $\forall h\in P$ 有 $\int_{\lp} hg\dd P=0$.\par
+接下来我们证 $g=0$. 假设 $\phi\in\colp$, 存在只依赖 $\phi$ 的范数的正数 $\epsilon$ 使得
+\[\int_{\lp} e^{\epsilon|\phi|}\dd \PP<+\infty.\]
+则对每个 $n\in\nn_0=\nn\cup\dk{0}$ 与 $\delta\in\xk{0,\frac{\epsilon}{3}}$ 都有
+\[\int_{\lp} |\phi|^n e^{\delta|\phi|}|g|\dd \PP\leq\fs{g}_{L^2\xk{\lp,\PP}}\xk{\int_{\lp} |\phi|^{2n} e^{2\delta|\phi|}\dd \PP}^\frac{1}{2}.\]
+注意到存在只依赖于 $\epsilon$ 和 $n$ 的正数 $C$, 使得 $|\phi|^{2n}e^{2\delta|\phi|}\leq C e^{\epsilon|\phi|}$.
+令
+\[F(z)\dy\int_{\lp}e^{z\phi}g\dd \PP,\ \forall z\in\cc,\ |\re z<\delta|.\]
+则 $F(z)$ 在 $\jh{z\in\cc}{|\re z|<\delta}$ 上解析, 且
+\[F^{(n)}(z)=\int_{\lp}\phi^n e^{z\phi}g\dd \PP,\ \forall n\in\nn_0,\forall z\in\jh{z\in\cc}{|\re z|<\delta}.\]
+特别地
+\[F^{\xk{n}}\xk{0}=\int_{\lp}\phi^n g\dd \PP=0,\ \forall n\in\nn_0.\]
+
+所以 $F\xk{z}=0$, 则 $F\xk{\xs}=0$, 由稠密性知 $g=0$.\par
+令
+\[\mathcal{F}\dy\jh{Q\xk{\phi_1,\,\dots,\phi_n}}{n\in\nn,\,\phi_s\in\colp,\,1\leq s\leq n},\]
+其中 $Q$ 为 $n$ 元复变量多项式. 则 $\forall\phi\in\colp$, $\exists\xk{x_n^0+\xs y_n^0}\in\ell^q$, s.t.
+\[\phi\xk{\xk{x_n+\xs y_n}}=\sum_{n=1}^\infty\xk{x_n\cdot \mean{x}{}_n^0+y_n\cdot \mean{y}{}_n^0}.\]
+
+对于 $\phi_1,\,\dots,\phi_n\in\colp$, $1\leq s\leq n$, 与 $m\in\nn$, 令
+\[\phi^m_s(\mathbf{Z})\dy\phi_1(z_1,\dots,z_m,0,\dots,0,\,\dotsc),\ \forall\mathbf{Z}=\xk{z_k}\in\lp.\]
+
+令 $Q_m\dy Q\xk{\phi_1^m,\dots,\phi_n^m}$, 则 $Q_m\in P$ 且
+\begin{equation*}
+Q_m\xrightarrow{L^2(\lp,p)}Q(\phi_1,\dots,\phi_n).\qedhere
+\end{equation*}
+\end{proof}
+接下来是补充内容, 令 $F=\jh{\phi^{n}}{n\geq0,\,n\in\zz,\,\phi\in\colp}$.
+\begin{remark}[补充]
+取这个就足够了.
+\end{remark}
+\begin{theorem}[补充]
+F 在 $L^2\xk{\lp,\PP}$ 中稠密.
+\end{theorem}
+\begin{proof}[补充证明]
+如若不然, $\exists g\neq 0$, $\forall\phi\in\colp$, 使得 $\int_{\lp}\phi^{n}g\dd\PP=0$.\par 
+不妨设 $\phi\neq 0$, $\exists \eps<0$, 使得
+\[\int_{\lp}e^{\eps\jd{\phi}}\dd\PP<+\infty.\]
+取 $\delta\in\xk{0,\frac{\epsilon	}{3}}$, 构造 $h\xk{z}=\int_{\lp}e^{z\phi}g\dd\PP$, 断言 $h\xk{z}$ 在 $\jd{\re z}<\delta$ 中解析.\par 
+$\forall z_{0}\in\jh{z}{\jd{\re z}<\delta}$, 取 $\eta>0$ 充分小, 使得 $B\xk{z_{0},\eta}\subset\jh{z}{\jd{\re z}<\delta}$ 且 $\eta\leq\frac{1}{6}\eps$, 则 $\forall z\in B\xk{z_{0},\eta}$, 
+\[h\xk{z}=\int_{\lp}e^{\xk{z-z_{0}}\phi}e^{z_{0}\phi}g\dd\PP\xk{z}=\int_{\lp}\sum_{k=0}^{\infty}\frac{\xk{z-z_{0}}^{k}\phi^{k}e^{z_{0}\phi}g}{k!}\dd\PP\xk{z}.\]
+因
+\begin{align*}
+\int_{\lp}\sum_{k=0}^{\infty}\jd{\frac{\xk{z-z_{0}}^{k}\phi^{k}e^{z_{0}\phi}g}{k!}}\dd\PP\xk{z} &\leq \int_{\lp}\sum_{k=0}^{\infty}\frac{e^{\delta\phi}\jd{g}\xk{\eta\jd{\phi}}^{k}}{k!}\dd\PP\xk{z}\\
+&\leq \int_{\lp}e^{\xk{\delta+\eta}\jd{\phi}}\jd{g}\dd\PP\xk{z}\\
+&\leq \int_{\lp}e^{\frac{\epsilon}{2}\jd{\phi}}\jd{g}\dd\PP\xk{z}\\
+&\leq \fs{g}_{L^2}\sqrt{\int_{\lp}e^{\epsilon\jd{\phi}}\dd\PP}<+\infty,
+\end{align*}
+由控制收敛定理得
+\[h\xk{z}=\sum_{k=0}^{\infty}\frac{\int_{\lp}\phi^{k}e^{z_{0}\phi}g\dd\PP\xk{z}}{k!}\xk{z-z_{0}}^{k},\]
+则由 $z_{0}$ 的任意性知 $h\xk{z}$ 在 $\jd{\re z}<\delta$ 中解析.\par 
+在 $0$ 的邻域内有
+\[h\xk{z}=\sum_{k=0}^{\infty}\frac{\int_{\lp}\phi^{k}g\dd\PP\xk{z}}{k!}\xk{z-z_{0}}^{k}=0,\]
+所以 $h\xk{z}\equiv 0$, 特别地 $h\xk{\xs}=\int_{\lp}e^{\xs\phi}g\dd\PP=0\Rightarrow g=0$ 矛盾, 故 $F$ 在 $L^2\xk{\lp,\PP}$ 中稠密.
+\end{proof}
+\begin{theorem}[补充]
+P 在 $L^2\xk{\lp,\PP}$ 中稠密.
+\end{theorem}
+\begin{proof}[补充证明]
+首先证明 $P\subset L^2\xk{\lp,\PP}$. 任取 $P_{m}$ 中一单项式, 不妨设 $m=1$. 由数分易知
+\[\int_{\lp}\jd{z_{1}\mean{z}{}_{1}^{b}}^{2}\dd\PP=\int_{\rr^{2}}\xk{\jd{x}^{2}+\jd{y}^{2}}^{a+b}\dd\NN_{a_{1}}<+\infty,\]
+故 $P\subset L^2\xk{\lp,\PP}$.\par 
+由基本的泛函分析知 $\forall \phi\in\colp$, $\exists z^{0}=\dk{x_{n}^{0}+\xs y_{n}^{0}}$, $z^{0}\in\lp$, 使得
+\[\phi\xk{z}=\sum_{n=1}^{\infty}\xk{x_{n}\cdot\mean{x}{}_{n}^{0}+y_{n}\cdot\mean{y}{}_{n}^{0}}.\]
+为证 $P$ 在 $L^2\xk{\lp,\PP}$ 中稠密, 只需证 $\forall\phi\in\colp$, $n\geq 0$, $\phi^{n}\in\mean{P}$. 为此构造
+\[Q_{m}\dy\phi^{n}\xk{z_{1},\dots,z_{m},0,\ldots}=\zk{\sum_{n=1}^{m}\xk{x_{n}\cdot\mean{x}{}_{n}^{0}+y_{n}\cdot\mean{y}{}_{n}^{0}}}^n\in P_{m},\]
+则 $\lim _{m\toi}Q_{m}=\phi^{n}$. 我们断言 $Q_{m}\in P_{m}$, 这是因为
+\[Q_{m}=\zk{\sum_{n=1}^{m}\xk{\frac{z_{n}+\mean{z}{}_{n}}{2}\cdot\mean{x}{}_{n}^{0}+\frac{z_{n}-\mean{z}{}_{n}}{2\ii}\cdot\mean{y}{}_{n}^{0}}}^{n}\in P_{m}.\]
+
+下证 $Q_{m}$ 在 $L^{2}$ 意义下收敛到 $\phi^{n}$. 注意到
+\[\jd{Q_{m}}\leq\xk{\sum_{n=1}^{\infty}\jd{x_{n}\cdot\mean{x}{}_{n}^{0}+y_{n}\cdot\mean{y}{}_{n}^{0}}}^{n}\leq\fs{\phi}_{\ell^q}^{n}\fs{z}_{\ell^p}^{n},\]
+于是
+\[\int_{\lp}\jd{Q_{m}-\phi^{n}}^{2}\dd\PP\leq\int_{\lp}\xk{\fs{\phi}_{\ell^q}^{n}\fs{z}_{\ell^p}^{n}+\jd{\phi}^{n}}^{2}\dd\PP\leq 4\fs{\phi}_{\ell^q}^{2n}\int_{\lp}\fs{z}_{\ell^p}^{2n}\dd\PP.\]
+不妨设 $\phi\neq 0$, 由于 $\int_{\lp}e^{\fs{z}_{\lp}}\dd\PP<+\infty$, $\exists s>0$, $\forall\fs{z}_{\lp}\geq s$, 有 $\fs{z}_{\lp}^{2n}\leq e^{\fs{z}_{\lp}}$, 则
+\begin{align*}
+\int_{\lp}\fs{z}_{\lp}^{2n}\dd\PP &\leq \int_{\fs{z}_{\lp}\geq s}e^{\fs{z}_{\lp}}\dd\PP+s^{2n}\int_{\fs{z}_{\lp}<s}1\dd\PP\\
+&\leq \int_{\lp}e^{\fs{z}_{\lp}}\dd\PP+s^{2n}<+\infty.
+\end{align*}
+这意味着控制收敛定理的条件成立, 故 $P$ 在 $L^2\xk{\lp,\PP}$ 中稠密.
+\end{proof}

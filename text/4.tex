@@ -1,0 +1,228 @@
+\section{Dynkin \texorpdfstring{$\pi-\lambda$}{} 系列定理}
+假设 $X$ 为一个集合, 令 $2^X\dy\jh{A}{A\subset X}$ 为 $X$ 的幂集.\par
+假设 $X$ 为一个集合, $\phi\subset 2^X$. 如果 $\phi$ 关于集合的有限交封闭, 则称 $\phi$ 为一个 $\pi$ 系.\par
+假设 $X$ 为一个集合, $\phi\subset 2^X$. 如果 $\phi$ 满足
+\begin{enumerate}[\rm(1)]
+\item $X\in\phi;$
+\item $\forall A,B\in\phi$ 且 $A\subset B$, 则 $B-A\in\phi;$
+\item 对任意单调递增集合序列 $\dk{A_n}_{n=1}^\infty\subset\phi$, $\bigcup_{n=1}^\infty\in\phi.$
+\end{enumerate}
+我们称 $\phi$ 为一个 $\lambda$ 系.
+\begin{remark}
+若 $\phi$ 既为 $\pi$ 系又为 $\lambda$ 系, 则 $\phi$ 为一个 $\sigma$ 代数.
+\end{remark}
+
+\begin{theorem}[Dynkin $\pi-\lambda$ 定理]
+\label{dynkin1}
+假设 $X$ 为一个非空集合, $\phi_2\subset\phi_1\subset 2^X$. 如果 $\phi_1$ 为一个 $\lambda$ 系, $\phi_2$ 为一个 $\pi$ 系, 则 $\phi_1$ 包含由 $\phi_2$ 生成的 $\sigma$ 代数 $\sigma\xk{\phi_2}$.
+\end{theorem}
+\begin{proof}
+我们用 $\phi_3$ 来表示由 $\phi_2$ 生成的 $\lambda$ 系, 则有 $\phi_3\subset\phi_1$.\par
+对每个 $C\in\phi_3$, 令
+\[\phi^C\dy\jh{D\in\phi_3}{D\cap C\in\phi_3}.\]
+首先我们证明 $\phi^C$ 是一个 $\lambda$ 系.
+\begin{enumerate}[\rm(1)]
+\item $X\in\phi^C;$
+\item $\forall A,B\in\phi^C$, 且 $A\subset B,\ A\cap B,\ B\cap C\in\phi_3$. 有 $A\cap C\subset B\cap C$ 成立;
+\item 略.
+\end{enumerate}
+其中第二个是因为 $\xk{B-A}\cap C=\xk{B\cap C}\setminus\xk{A\cap C}\in\phi_3$, 于是 $B-A\in\phi^C$.\par
+注意到对每个 $C\in\phi_2$, $\phi_2\subset \phi^C\subset \phi_3$. 所以 $\phi^C=\phi_3$. 所以 $\forall C\in\phi_2,\ D\in\phi_3$ 有 $C\cap D\in\phi_3$.\par 
+从而可知, 对 $\forall C\in\phi_3$ 有 $\phi_2\subset \phi^C \subset \phi_3$. 所以 $\phi^C=\phi_3$. 进而 $\forall C,D\in\phi_3$ 有 $C\cap D\in\phi_3$. 于是 $\phi_3$ 是一个 $\sigma$ 代数.\par 
+最后, $\sigma\xk{\phi_2}\subset \phi_3\subset\phi_1$.
+\end{proof}
+\begin{proof}[补充证明]
+设 $\pi$ 系为 $\phi$, 显然 $\lambda\xk{\phi}\subset\sigma\xk{\phi}$. 令
+\[\phi_1=\jh{A\subset\lambda\xk{\phi}}{A\cap B\subset\lambda\xk{\phi},\,\forall B\in\phi},\]
+则 $X\in\phi_1$. 设 $A\in\phi_1$, 则 $A\bu\cap B=X\cap B-A\cap B\in\lambda\xk{\phi}$.\\
+设 $A_n\in\phi_1$, 则 $\bigcup_{k=1}^{n}A_k$ 递增, 且
+\[\bigcup_{k=1}^{\infty}A_k\cap B=\bigcup_{k=1}^{\infty}\xk{A_k\cap B}=\lim _{n\toi}\bigcup_{k=1}^{n}\xk{A_k\cap B}\in\lambda\xk{\phi}.\]
+故 $\phi_1$ 为 $\sigma$ 代数. 又因 $\phi\subset\phi_1$, 有 $\lambda\xk{\phi}\supset\phi_1\supset\sigma\xk{\phi}$, 故 $\lambda\xk{\phi}=\sigma\xk{\phi}$.
+\end{proof}
+\begin{corollary}
+可测空间 $\xk{\rr,\mathcal{B}\xk{\rr}}$ 上概率测度 $\PP$ 由其分布函数唯一确定.
+\[F(x)\dy P\xk{(-\infty,x]},\ x\in\rr.\]
+\end{corollary}
+\begin{definition}
+假设 $X$ 为一个非空集合, $H$ 为由 $X$ 上的某些有界复值函数构成的集合. 我们称 $H$ 关于有界收敛封闭, 如果对每个函数列 $\dk{f_n}_{n=1}^\infty\subset H$, 满足
+\begin{enumerate}[\rm(1)]
+\item 存在 $M<+\infty$ 使得 $|f_n\xk{x}|\leq M,\ \forall n\in\nn,\ x\in X;$
+\item $f\xk{x}\dy\lim\limits_{m\to\infty}f\xk{x}$ 对每个 $x\in X$ 存在, 则 $f\in H$.
+\end{enumerate}
+
+另外, 我们称 $H$ 为乘性系, 如果 $H$ 关于乘法封闭.
+\end{definition}
+
+\begin{definition}
+我们用 $\sigma\xk{H}$ 表示下面的集族生成的 $\sigma$ 代数
+\[\jh{f^{-1}\xk{O}}{f\in H,\,O\mathrm{\ is\ an\ open\ set\ in\ }\cc}.\]
+\end{definition}
+\begin{theorem}[Dynkin $\pi-\lambda$ 定理的函数版本]
+\label{dynkin2}
+假设 $X$ 为一个非空集合, $H$ 为由 $X$ 上的某些有界实值函数构成的实线性空间, 满足
+\begin{enumerate}[\rm(1)]
+\item $H$ 包含 $\mathbf{1}$;
+\item $H$ 关于有界收敛封闭.
+\end{enumerate}
+若 $M\subset H$ 为一个乘性系, 则 $H$ 包含所有的有界实值 $\sigma\xk{M}$ 可测函数.
+\end{theorem}
+\begin{proof}[证明思路]
+不妨设 $H$ 为满足条件的最小的空间.\par
+第一步: 对于 $f\in H$, 令 $H^f\dy\jh{g\in H}{f\cdot g\in H}$.  类似定理 \ref{dynkin1} 可证 $H=H^f$, 则 $H$ 为一个代数(抽象代数中的代数).\par 
+第二步: 令 $\mathcal{B}\dy\jh{A\subset X}{\rchi_A\in H}$ 为一个 $\sigma$ 代数.\par 
+第三步: $H$ 包含所有的有界实值 $\mathcal{B}$ 可测函数.\par 
+第四步: 只需证 $\sigma\xk{M}\subset\mathcal{B}$. 注意到 $\jh{x\in X}{f\xk{x}>a}$, $a\in\rr$, $f\in M$ 可以生成 $\sigma\xk{M}$. 所以只需证 $\rchi_{\xk{0,+\infty}}\circ\xk{f-a}\in H$.\par 
+对每个 $n\in\nn$, 令 $\phi_n\dy\max\dk{0,\min\dk{nx,1}}$, $x\in\rr$.
+则
+\[\lim_{n\to\infty}\phi_n\xk{x}=\rchi_{\xk{0,+\infty}}\xk{x},\ \forall x\in\rr.\]
+
+给定 $F_n\dy\phi_n\xk{f-a}$, $M\dy\sup\limits_{x\in X}|f(x)-a|$. 由 Weierstrass 逼近定理, 存在一列单变量的实系数多项式 $\dk{P_l}_{l=1}^\infty$ 使得 $\lim\limits_{l\to\infty}P_l\xk{x}=\phi_n\xk{x}$ 关于 $x\in\zk{-M,M}$ 一致收敛. 所以 $P_l\xk{f-a}\in H$.\par 
+而当 $l\to\infty$ 时, $P_l\xk{f-a}\to F_n\in H$. 且 $F_n$ 单调收敛于
+\begin{equation*}
+\rchi_{\jh{x\in X}{f\xk{x}>a}}\in H.\qedhere
+\end{equation*}
+\end{proof}
+\begin{proof}[补充证明]
+取 $M\subset H_0\subset H$, 其中 $H_0$ 是对有界收敛封闭的包含 $M$, \textbf{1} 的最小线性空间. $\forall f\in M$, 令 $H_0^f=\jh{g\in H_0}{f\dot g\in H_0}$, 则 $H_0^f$ 是对有界收敛封闭的包含 $M$ 和 \textbf{1} 的线性空间. 于是 $H_0^f=H$, 故 $H_0$ 对乘法封闭.\par 
+如果证明了 $\forall A\subset\sigma\xk{M}$, $\rchi_A\in H_0$, 那么所有简单函数都在 $H_0$ 中, 而所有 $\sigma\xk{M}$ 可测的有界函数, 都能表示为一致有界的简单函数的极限, 可知原命题成立.\par 
+注意到
+\[\sigma\xk{M}=\sigma\jd{f^{-1}\xk{c,+\infty}}{f\in M,\,c\in \rr},\]
+构造
+\[\Omega=\jh{A\subset\sigma\xk{M}}{\rchi_A\in H_0}.\]
+由 $\mathbf{1}\in H_0$ 知 $X\in\Omega$.\\
+设 $A\in\Omega$, $\rchi_{A\bu}=1-\rchi_A\in H_0$, 所以 $A\bu\in\Omega$.\\
+设 $A,\,B\in\Omega$, $\rchi_{A\cup B}=\rchi_A+\rchi_B-\rchi_A\rchi_B\in H_0$, 所以 $A\cup B\in\Omega$.\\
+故 $\Omega$ 为代数.\\
+设 $A_n\uparrow A$, $A_n\in H_0$, $\rchi_A=\lim _{n\toi}\rchi_{A_n}\in H_0$, 所以 $A\in\Omega$.\\
+故 $\Omega$ 为单调类, 从而为 $\sigma$ 代数.\par 
+下证 $\jh{f^{-1}\xk{c,+\infty}}{f\in M,\,c\in\rr}\subset\Omega$.\\
+固定 $f\in M$, $\jd{f}\leq s$, 则需要证 $\rchi_{f^{-1}\xk{c,+\infty}}\in H_0$.\\
+取 $\rr$ 上连续函数 $\phi_n\xk{x}=\max\dk{0,\min\dk{n\xk{x-c},1}}$, 有 $\lim _{n\toi}\phi_n\xk{x}=\rchi_{\xk{c,+\infty}}$, 所以 $\lim _{n\toi}\phi_n\xk{f\xk{x}}=\rchi_{f^{-1}\xk{c,+\infty}}$.\\
+在 $\zk{-s,s}$ 上, 取多项式 $h_n\xk{x}$, $\jd{h_n\xk{x}-\phi_n\xk{x}}\leq\frac1n$, 则 $\jd{h_n\xk{x}}\leq 2$ 且
+\[\jd{h_n\xk{f\xk{x}}-\phi_n\xk{f\xk{x}}}\leq\frac{1}{n}\Rightarrow \lim _{n\toi}h_n\xk{f\xk{x}}=\rchi_{f^{-1}\xk{c,+\infty}}.\]
+故 $f^{-1}\xk{c,+\infty}\in H_0$, 这导致 $\jh{f^{-1}\xk{c,+\infty}}{f\in M,\,c\in\rr}\subset\Omega$.\\
+进一步有 $\Omega=\sigma\xk{M}$, 原问题自然成立.
+\end{proof}
+\begin{theorem}[定理 \ref{dynkin2} 的复版本]
+若在定理 \ref{dynkin2} 中加上条件 ``$M$ 与 $H$ 对共轭封闭'', 则对 $H$ 是复线性空间的情况也成立.
+\end{theorem}
+\begin{proof}[补充证明]
+记 $H$ 中全体实值函数为 $H_\rr$, 则 $H_{\rr}$ 也包含 \textbf{1} 且对有界收敛封闭.\\
+由 $H_{\rr}$ 对共轭封闭知, $H_{\rr}$ 由全体 H 中函数的实部和虚部组成.\\
+记 $M$ 中全体实值函数为 $M_\rr$, 则 $M_{\rr}$ 也对乘法封闭.\\
+要保证 $M$ 中函数可测, 就相当于保证 $M_{\rr}$ 中函数可测.\\
+根据实版本定理, $H_{\rr}$ 一定包含所有 $\sigma\xk{M_{\rr}}$ 有界可测函数.\\
+从而 $H$ 包含所有 $\sigma\xk{M}$ 有界可测函数.
+\end{proof}
+\begin{lemma}
+假设 $X$ 为一个实可分 Banach 空间, 则 $\sigma\xk{X^*}=\mathcal{B}\xk{X}$.
+\end{lemma}
+\begin{proof}[补充证明]
+我们先证明两个作为引理的结论.\\
+$(1)$ 对于 $f\in X^*$, $\forall\eps>0$, $\exists x_0\in X$, 使得 $f\xk{x_0}=\fs{f}$, 且 $\fs{x_0}\leq 1+\eps$.\\
+证: 不妨设 $\fs{f}\neq 0$. 则 $\forall\eps>0$, 取 $\delta=\frac{\eps}{1+\eps}\fs{f}$, $\exists y_0$ 使得 $\frac{\jd{f\xk{y_0}}}{\fs{y_0}}\geq \fs{f}-\delta$, 于是 $\jd{f\xk{y_0}}\neq0$. 再取 $x_0=\frac{y_0}{f\xk{y_0}}\fs{f}$, 则 $f\xk{x_0}=\fs{f}$ 且
+\[\frac{\fs{f}}{\fs{x_0}}\geq\fs{f}-\delta\Rightarrow\fs{x_0}\leq\frac{\fs{f}}{\fs{f}-\delta}=1+\eps,\]
+证毕.\\
+$(2)$ 若 $f\in X^*$, 则 $\fs{f}\cdot d\xk{x,\ker f}=\jd{f\xk{x}}$.\\
+证: 不妨设 $\fs{f}\neq 0$, 则 $\forall z\in\ker f$, 有 $\jd{f\xk{x}}\leq\fs{f}\cdot\fs{x-z}$ 成立, 也就是说\\
+$\jd{f\xk{x}}\leq\fs{f}\cdot d\xk{x,\ker f}$.\\
+另一方面, $\forall z\notin\ker f$, $x-\frac{f\xk{x}}{f\xk{z}}z\in\ker f$, 则
+\[\frac{\jd{f\xk{z}}}{\fs{z}}\,d\xk{x,\ker f}\leq\frac{\jd{f\xk{z}}}{\fs{z}}\,d\xk{x,x-\frac{f\xk{x}}{f\xk{z}}z}=\jd{f\xk{x}}.\]
+由 z 的任意性知 $\fs{f}\cdot d\xk{x,\ker f}\leq\jd{f\xk{x}}$, 故 $\jd{f\xk{x}}=\fs{f}\cdot d\xk{x,\ker f}$.\\
+证毕.\\
+现在证明原问题:\par
+由 $X$ 可分知单位球面可分, 取单位球面的稠密子集 $\dk{x_n}$, 对 $x_n^{**}$ 用结论 $(1)$, 则 $\exists f_n\in X^*$, $\fs{f_n}\leq 1+\frac{1}{n}$, $f_n\xk{x_n}=\fs{x_n^{**}}=1$. 显然推出 $\fs{f_n}\geq 1$, $\lim\limits_{n\toi}\fs{f_n}=1$, 故有
+\[1=\jd{f_n\xk{x_n}}=\fs{f_n}\cdot d\xk{x_n,\ker f_n}\Rightarrow \lim _{n\toi}d\xk{x_n,\ker f_n}=1.\]
+
+构造
+\[G=\bigcap_{n=1}^{\infty}\bigcup_{k\in\xk{-1,1}}\xk{\ker f_n+kx_n}=\bigcap_{n=1}^{\infty}f_n^{-1}\xk{-1,1}\in\sigma\xk{X^*}.\]
+$(a)$ 证明 $G$ 含有开球: $\forall\,\fs{x}<\frac12$, $n\geq 1$, 有 $\jd{f_n\xk{x}}\leq 2\fs{x}<1$. 取 $k_n=f_n\xk{x}$, 则 $x-k_nx_n\in\ker f_n\Rightarrow x\in G$, 故 $G$ 含有开球.\\
+$(b)$ 证明 $G$ 有界: 任取 $x\in G$ 且 $x\neq 0$, 有 $x\in\bigcap_{n=1}^{\infty}\xk{\ker f+k_nx_n}$, 故存在收敛子列 $x_{n_{k}}\to\frac{x}{\fs{x}}$.\\
+一方面
+\begin{align*}
+d\xk{x,\ker f_{n_{k}}}\leq &\,\Big\Vert x-\fs{x}x_{x_{k}}\Big\Vert+d\xk{\fs{x}x_{n_{k}},\ker f_{n_{k}}}\\
+=&\,\Big\Vert x-\fs{x}x_{n_{k}}\Big\Vert+\fs{x}\cdot d\xk{x_{n_{k}},\ker f_{n_{k}}}\to\fs{x}.
+\end{align*}
+另一方面
+\[d\xk{x,\ker f_{n_{k}}}\geq d\xk{\fs{x}x_{n_{k}},\ker f}-\Big\Vert x-\fs{x}x_{n_{k}}\Big\Vert\to\fs{x}.\]
+再加上
+\[d\xk{x,\ker f_{n_{k}}}=d\xk{k_{n_{k}}x_{n_{k}},\ker f_{n_{k}}}=\jd{k_{n_{k}}}\cdot d\xk{x_{n_{k}},\ker f_{n_{k}}},\]
+则有 $\jd{k_{n_{k}}}\to\fs{x}\Rightarrow\fs{x}\geq 1$, 所以 $G$ 有界.\par
+任取 $a\neq 0$, $x'\in X$, 令 $g_n=af_n+f_n\xk{x'}$, 则有
+\[aG+x'=\bigcap_{n=1}^{\infty}\zk{af_n^{-1}\xk{-1,1}+x'}=\bigcap_{n=1}^{\infty}g_n^{-1}\xk{-1,1}\in\sigma\xk{X^*}.\]
+任取开集 $M\subset X$, $\forall y\in M$, 取 $G_y=a_y G+y\subset M$, $G_y$ 中含有一开球 $M_y$, 则 $\bigcup_{y\in M}M_y=M$. 由 Lindelof 性, 可挑出 $\dk{y_n}$ 使得 $\bigcup_n G_{y_{n}}=M$.\\
+故 $M\in\sigma\xk{X^*}\Rightarrow\sigma\xk{X^*}=\BB\xk{X}$.
+\end{proof}
+\begin{lemma}
+设 $X$ 为实可分 Banach 空间, 记
+\[\FF C_c^\infty\xk{X}=\jh{f=F\xk{\phi_1,\dots,\phi_n}}{\phi_i\in X^*,\,F\in C_c^\infty\xk{\rr^n},\,n\in\nn}.\]
+则
+\[\sigma\xk{\FF C_c^\infty\xk{X}}=\sigma\xk{\jh{e^{\xs\phi}}{\phi\in X^*}}=\BB\xk{X}.\]
+\end{lemma}
+\begin{proof}[补充证明 1]
+先证明前半部分, 由基本的拓扑学和测度论知识, 显然
+\[\BB\xk{X}\supset\sigma\xk{\FF C_c^\infty\xk{X}}\supset\sigma\jh{F\xk{\phi}}{\phi\in X^*,\,F\in C_c^\infty\xk{\rr}}.\]
+下证 $\BB\xk{X}\subset\sigma\jh{F\xk{\phi}}{\phi\in X^*,\,F\in C_c^\infty\xk{\rr}}.$\par
+由 $\BB\xk{X}=\sigma\xk{X^*}=\sigma\jh{\phi^{-1}[a,+\infty)}{\phi\in X^*,\,a\in\rr}$ 可得
+\begin{align*}
+&\sigma\jh{F\xk{\phi}}{\phi\in X^*,\,F\in\cci\xk{\rr}}\\
+=&\sigma\jh{\phi^{-1}\xk{F^{-1}\xk{O}}}{\phi\in X^*,\,F\in\cci\xk{\rr},\,O\in\BB\xk{\rr}},
+\end{align*}
+故只需证 $\forall\phi^{-1}[a,+\infty)$, $\phi\in X^*$, 有
+\[\phi^{-1}[a,+\infty)\in\sigma\jh{\phi^{-1}\xk{F^{-1}\xk{O}}}{\phi\in X^*,\,F\in\cci\xk{\rr},\,O\in\BB\xk{\rr}}.\]
+如果能取到 $F_n^{-1}\xk{O_n}=[a+n-1,a+n]$, 则有
+\[[a,+\infty)=\bigcup_{n}[a+n-1,a+n]=\bigcup_{n}F_n^{-1}\xk{O_n},\]
+证明就完成了.\\
+我们可以断言 $\forall\zk{a,b}$, $\exists F\in\cci\xk{\rr},\,O\in\BB\xk{\rr}$, 使得 $F^{-1}\xk{O}=\zk{a,b}$. 比如取
+\begin{equation*}
+F\xk{x}=
+\begin{cases}
+e^{\frac{1}{1-\jd{\frac{2x-a-b}{b-a+2}}^2}}, & \jd{x-\frac{a+b}{2}}\leq\frac{b-a+2}{2}\\
+0, & else
+\end{cases}
+,\ O=\zk{e^{\frac{1}{1-\jd{\frac{b-a}{b-a+2}}^2}},e^{-1}}.\qedhere
+\end{equation*}
+\end{proof}
+\begin{proof}[补充证明 2]
+现在证 $\jh{e^{\xs\phi}}{\phi\in X^*}=\BB\xk{X}$.\par 
+首先, 显然有 $\jh{e^{\xs\phi}}{\phi\in X^*}\subset\BB\xk{X}$.\par 
+注意到 $\sigma\jh{\sin sx}{s>0}=\BB\xk{\rr}$, 这可以由 $\lim _{n\toi}n\sin\frac{x}{n}=x$ 得到. 利用此结果可得
+\begin{align*}
+\jh{e^{\xs\phi}}{\phi\in X^*}&\supset\sigma\jh{\sin s\phi}{s>0,\,\phi\in X^*}\\
+&=\sigma\jh{\phi^{-1}\zk{\frac{1}{s}\sin ^{-1}\xk{c,+\infty}}}{s>0,\,\phi\in X^*,\,c\in\rr}.
+\end{align*}
+由
+\[\BB\xk{\rr}=\sigma\jh{\frac{1}{s}\sin ^{-1}\xk{c,+\infty}}{s>0,\,c\in\rr}\]
+知 $\forall c\in\rr$,
+\[\xk{c,+\infty}\in\sigma\jh{\frac{1}{s}\sin ^{-1}\xk{c,+\infty}}{s>0,\,c\in\rr}.\]
+则
+\begin{align*}
+\phi^{-1}\xk{c,+\infty}&\in\phi^{-1}\xk{\sigma\jh{\frac{1}{s}\sin ^{-1}\xk{c,+\infty}}{s>0,\,c\in\rr}}\\
+&=\sigma\jh{\phi^{-1}\zk{\frac{1}{s}\sin ^{-1}\xk{c,+\infty}}}{s>0,\,\phi\in X^*,\,c\in\rr},
+\end{align*}
+这里用到了经典的测度论习题. 从而
+\begin{align*}
+&\jh{\phi^{-1}\xk{c,+\infty}}{\phi\in X^*,\,c\in\rr}\\
+\subset\;&\sigma\jh{\phi^{-1}\zk{\frac{1}{s}\sin ^{-1}\xk{c,+\infty}}}{s>0,\,\phi\in X^*,\,c\in\rr},
+\end{align*}
+这就是 $\jh{e^{\xs\phi}}{\phi\in X^*}\supset\BB\xk{X}$.
+\end{proof}
+
+
+\begin{remark}[补充]
+显然可以保证线性组合可测, 于是
+\[\sigma\xk{\SF C_c^\infty\xk{X}}=\sigma\xk{\Span\jh{e^{\xs\phi}}{\phi\in X^*}}=\BB\xk{X},\]
+其中 $\SF \cci\xk{X}=\Span\xk{\FF\cci\xk{X}}$.
+\end{remark}
+\begin{theorem}
+假设 $\mu$ 为 $\mathcal{B}(X)$ 上的一个概率测度且 $1\leq p<+\infty$, 则
+\begin{enumerate}
+\item[\rm(a)] $\mathscr{F}C_c^\infty(X)$ 在 $L^p(B,\mathcal{B}(X),\mu)$ 中稠密.
+\item[\rm(b)] $\Span\jh{e^{\xs\phi}}{\phi\in X^*}$ 在 $L^p(X,\mathcal{B}\xk{X},\mu)$ 中稠密.
+\end{enumerate}
+\end{theorem}
+\begin{proof}[补充证明]
+这里只给出 (a) 的证明, (b) 同理. 只需证 $\rchi_{A}\subset\mean{\SF\cci\xk{X}}$, $\forall A\in\BB\xk{X}$.\par 
+因为 $\mathbf{1}\in\mean{\SF\cci\xk{X}}$, 且 $\mean{\SF\cci\xk{X}}$ 是对有界收敛和共轭封闭的线性空间, 又 $\SF\cci\xk{X}$ 为代数且对共轭封闭, 以及 $\SF\cci\xk{X}\subset\mean{\SF\cci\xk{X}}$, 由 Dynkin $\pi-\lambda$ 定理的复函数版本知 $\mean{\SF\cci\xk{X}}$ 包含所有 $\sigma\xk{\SF\cci\xk{X}}$ 有界可测函数.\par 
+最后, 由 $\sigma\xk{\SF\cci\xk{X}}=\BB\xk{X}$ 知 $\rchi_{A}\subset\mean{\SF\cci\xk{X}}$, $\forall A\in\BB\xk{X}$.
+\end{proof}

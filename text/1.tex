@@ -1,0 +1,192 @@
+\section{无穷维测度}
+\subsection{预备内容}
+\begin{theorem}
+\label{theo:1}
+若 $X$ 是可分的无穷维赋范线性空间, $\mu$ 是一个 Borel 测度. 如果 $\mu$ 有平移不变性, 则要么 $\mu\equiv0$ 要么 $\mu\equiv\infty$.
+\end{theorem}
+\begin{lemma}
+对于任意 $ x\in X$, $r>0$, 在 $B(x,r)$ 中存在可数个半径相同的两两不交的开球.
+\end{lemma}
+\begin{proof}
+令 $x_1\in X$ 为一单位向量且 $E_1=\Span\dk{x_1}$.\\
+由 Riesz 引理, 存在 $x_2\in X$, 满足 $\fs{x_2}=1$ 且 $d(x_2,E_1)>1/2$;\\
+再使用一次 Riesz 引理, 存在 $x_3\in X$, 满足 $\fs{x_3}=1$ 且 $d(x_3,E_2)>1/2$;\\
+归纳得可得 $\dk{x_n}_{n=1}^\infty$ 使得 $\fs{x_i-x_j}>1/2,\ i\neq j$.\\
+因此
+$$B\xk{x_i,\frac14}\cap B\xk{x_j,\frac14}=\varnothing,\ i\neq j,$$
+进一步有
+\[B\xk{\frac{rx_i}{2},\frac{r}{8}}\cap B\xk{\frac{rx_j}{2},\frac{r}{8}}=\varnothing,\ i\neq j,\ \text{且 }B\xk{\frac{rx_i}{2},\frac{r}{8}}\subset B\xk{0,r}.\]
+因此我们获得了一列满足条件的开球
+\begin{equation*}
+\left\{B\left(x+\frac{rx_i}{2},\frac{r}{8}\right)\right\}_{i=1}^\infty.\qedhere
+\end{equation*}
+\end{proof}
+
+\begin{proof}[定理 \ref{theo:1} 的证明]
+因为 $X$ 是可分的, 所以 $X$ 是一个 Lindeloff 空间. 于是取 $X$ 的一个开覆盖 $
+\jh{B(x,r)}{x\in X}$, 存在其可数子覆盖 $\jh{B(x_i,r)}{i\in\mathbb{N}^+}$.
+假设 $\mu$ 是一个平移不变的 Borel 测度, 因此 $\mu(B(x_i,r))=\mu(B(x_j,r))$.
+\begin{enumerate}[\rm(1)]
+\item 如果 $\mu(B(x_1,r))=0$, 则
+$$\mu(X)\leq\sum_{i=1}^\infty \mu(B(x_i,r))=0,$$
+因此 $\mu(X)=0$, 也就是说 $\mu\equiv0$.
+\item 如果 $0<\mu(B(x_1,r))<\infty$, 根据引理存在一列有限开球使得
+$$\bigcup_{i=1}^\infty B(y_i,\delta)\subset B(x_1,r),$$
+进而有
+$$\sum_{i=1}^\infty\mu(B(y_i,s))\leq\mu(B(x_1,r))<\infty,$$
+因此 $\mu(B(y,s))=0$ 对所有 $y\in X$ 成立. 由 $(1)$ 可知 $\mu(X)=0$, 矛盾.
+\item 如果 $\mu(B(x_1,r))=\infty$, 由 $(1)$ 和 $(2)$ 可知 $\mu\equiv\infty$.\qedhere
+\end{enumerate}
+\end{proof}
+\subsection{高斯测度}
+\begin{definition}[高斯测度]
+令 $(G,\mathcal{T})$ 为拓扑空间, 记 $\mathcal{B}(G)$ 为由 $\mathcal{T}$ 生成的 $\sigma$ 代数. 定义 $\rr^2$ 上的高斯测度为
+$$
+\mathcal{N}_a(B)\dy\frac{1}{2\pi a^2}\int_B\exp\left(-\frac{x^2+y^2}{2a^2}\right)\dd x\dd y,\ B\in\mathcal{B}(G),\ a>0.
+$$
+若 $a_i>0$, $n\in\nn^+$, $a_1+\dots+a_i+\cdots<\infty$. 可定义 $\cc^\infty$ 上的高斯测度如下
+$$
+\mathcal{N}(B)\dy\prod_{i=1}^\infty \mathcal{N}_{a_i}(B),\ B\in\mathcal{B}(\cc^\infty).
+$$
+\end{definition}
+\begin{definition}[$\lp$ 空间]
+$$
+\lp\dy\jh{x+\xs y}{x,y\in\rr^\infty,\,\fs{x}_{\lp}^p+\fs{y}_{\lp}^p<+\infty},\ p\in[1,+\infty).
+$$
+$$
+\ell^{\infty}\dy\jh{x+\xs y}{x,y\in\rr^\infty,\,\sup(|x_i|+|y_i|)<+\infty}.
+$$
+\end{definition}
+\begin{remark}[补充]
+在 $\lp$ 中范数 $\zk{\sum_{i}\xk{\jd{x_i}^p+\jd{y_i}^p}}^\frac{1}{p}$ 和范数 $\xk{\sum_{i}\jd{z_i}^p}^{\frac{1}{p}}$	 等价.\\
+这是因为设
+\[M_p=
+\begin{cases}
+1, & p\leq 2\\
+2^{\frac{1}{2}-\frac{1}{p}}, &p>2
+\end{cases}
+,\ m_p=
+\begin{cases}
+2^{\frac{1}{2}-\frac{1}{p}}, & p\leq 2\\
+1, & p>2
+\end{cases}
+.\]
+则有
+\[m_p\zk{\sum_{i}\xk{\jd{x_i}^p+\jd{y_i}^p}}^\frac{1}{p}\leq
+\zk{\sum_{i}\xk{\jd{x_2}^2+\jd{y_i}^2}^{\frac{p}{2}}}^{\frac{1}{p}}\leq M_p\zk{\sum_{i}\xk{\jd{x_i}^p+\jd{y_i}^p}}^\frac{1}{p}.
+\]
+\end{remark}
+\begin{theorem}
+$\mathcal{B}(\lp)=\jh{A\cap\lp}{A\in\mathcal{B}(\cc^\infty)},\,p\in[1,+\infty)$.
+\end{theorem}
+\begin{proof}[补充证明]
+先解释一下记号, 我们要证的是 $\BB\xk{\lp}=\BB\xk{\cc^{\infty}}\cap\lp$, $1\leq p<+\infty$.\\
+左边表示 $\lp$ 空间按范数拓扑在 $\lp$ 空间生成的 Borel 代数.\\
+右边 $\BB\xk{\cc^{\infty}}$ 表示按 $\cc^{\infty}$ 的拓扑在 $\cc^{\infty}$ 生成的 Borel 代数.\\
+$\BB\xk{\cc^{\infty}}\cap\lp$ 表示 $\BB\xk{\cc^{\infty}}$ 所有元素分别与 $\lp$ 求交.\par
+由基本测度论习题, $\BB\xk{\cc^\infty}\cap\lp=\BB\xk{\cc^\infty\cap\lp}$, 其中 $\BB\xk{\cc^{\infty}\cap\lp}$ 表示 $\lp$ 空间按子空间拓扑在 $\lp$ 中生成的 Borel 代数.\par
+先证 $\lp$ 中闭球是 $\lp$ 中若干闭集 (子空间拓扑) 之交, 设 $a=\xk{a_1,a_2,\ldots}\in\lp$, 注意到
+\[\jh{z}{\sum_{i=1}^{\infty}\jd{z_1-a_i}^p\leqslant\delta}=\bigcap_{n=1}^{\infty}\zk{\jh{z}{\sum_{i=1}^{n}\jd{z_1-a_i}^p\leqslant\delta}\cap\lp},\]
+由点集拓扑, $\jh{z}{\sum_{i=1}^{n}\jd{z_1-a_i}^p\leqslant\delta}$ 是 $\cc^\infty$ 中闭集, 右边是 $\lp$ 闭集 (子空间拓扑) 可数交, 所以 $\lp$ 中闭球在 $\BB\xk{\cc^{\infty}\cap\lp}$ 中.\par
+对 $\lp$ 中任意开集 $U$, $\forall x\in U$, $\exists r_x>0$, $\mean{B\xk{a,r_a}}\subset U$, 则 
+\[U=\bigcup_{a\in U}\mean{B\xk{a,r_a}}=\bigcup_{a\in U}B\xk{a,r_a},\] 由 Lindelof 性 (注意 $\ell^\infty$ 不具有 Lindelof 性), 这可看成可数并, 故 $U\in\BB\xk{\cc^{\infty}}\cap\lp$, 从而 $\BB\xk{\lp}\subset\BB\xk{\cc^{\infty}}\cap\lp$.\par
+ $\star$ 取 $\xk{X_1\times X_2\cdots}\cap\lp$, 其中除去有限个 $X_i$ 为 $\cc$ 中闭集外, 剩下的都取 $\cc$, 不妨设 $X_{s+1}=X_{s+2}=\cdots=\cc$. 这是 $\lp$ 中的闭集 (子空间拓扑). 下证该集合为 $\lp$ 中闭集 (按范数).\par 
+设 $\xk{a_1^{\xk{n}},a_2^{\xk{n}},\ldots}\in\xk{X_1\times X_2\cdots}\cap\lp$ 满足 $\sum_{i=1}^{\infty}\jd{a_i^{\xk{n}}-a_i}^p\to 0$.\\
+则有 $\jd{a_i^{\xk{n}}-a_i}\to 0$, 故 $a_i\in X_i$, 故 $\xk{a_1,a_2,\ldots}\in\xk{X_1\times X_2\times\cdots}\cap\lp$, 这也就是说 $\xk{X_1\times X_2\times\cdots}\cap\lp$ 为 $\lp$ 中闭集 (按范数).\par 
+对于任意子空间拓扑中拓扑基的元素 $\xk{X_1\times X_2\times\cdots}\cap\lp$, 不妨设 $X_{s+1}=X_{s+2}=\cdots=\cc$, 其余 $X_i$ 为开集. 其在 $\lp$ 中的补集为
+\[\zk{\xk{X_c\bu\times\cc\times\cdots}\cup\cdots\cup\xk{\cc\times\cdots\times\cc\times X_s\bu\times\cc\cdots}}\cap\lp,\]
+故所有由 $\star$ 构造的闭集生成的 $\sigma$ 代数就是 Borel 代数, 这导致 $\BB\xk{\lp}\supset\BB\xk{\cc^{\infty}}\cap\lp$. 这就证明了结论.
+\end{proof}
+
+\begin{lemma}
+$\fs{z}_{\lp}\leq\fs{x}_{\ell^1},\,p\in[1,+\infty)$.
+\end{lemma}
+\begin{proof}
+由定义
+$$\fs{z}_{\lp}=\left(\sum_{i=1}^\infty |z_i|^p\right)^{\frac{1}{p}},\ \fs{z}_{\ell^1}=\sum_{i=1}^\infty|z_i|,$$
+可知只需证
+$$\sum_{i=1}^\infty|z_i|^p\leq\left(\sum_{i=1}^\infty |z_i|\right)^p.$$
+而这是显然的, 因为
+\begin{equation*}
+\sum_{i=1}^\infty\left(\frac{|z_i|}{\sum_{i=1}^\infty|z_i|}\right)^p\leq 1.\qedhere
+\end{equation*}
+\end{proof}
+\begin{theorem}
+$\mathcal{N}(\lp)=1,p\in[1,+\infty)$.
+\end{theorem}
+\begin{proof}
+取 $f_i:\cc^{\infty}\to\rr,\,z\mapsto \jd{x_i}^p+\jd{y_i}^p$, 则
+\[\int_{\cc^{\infty}}\sum_{i=1}^{\infty}f_i\xk{z}\dd\NN=\sum_{i=1}^{\infty}\int_{\cc}f_i\xk{z}\dd\NN,\]
+也就是
+\[\int_{\cc^{\infty}}\sum_{i=1}^\infty (|x_i|^p+|y_i|^p)\dd\mathcal{N}=\sum_{i=1}^\infty\int_{\cc}|x_i|^p+|y_i|^p\dd\mathcal{N}_{a_i}.\]
+由
+\begin{align*}
+\int_{\cc^\infty}|x_i|^p+|y_i|^p\dd\mathcal{N}_{a_i}
+=&\frac{1}{2\pi a_i^2}\int_{\rr^2}\xk{\jd{x_i}^p+\jd{y_i}^p}e^{-\frac{x_i^2+y_i^2}{2a_i^2}}\dd x_i\dd y_i\\
+=&\frac{4}{2\pi a_i^2}\int_{\rr^2_+}\xk{x_i^p+y_i^p}e^{-\frac{x_i^2+y_i^2}{2a_i^2}}\dd x_i\dd y_i\\
+=&\frac{4}{2\pi a_i^2}\int_{0}^{\frac{\pi}{2}}\dd\theta\int_{0}^{\infty}r^{p+1}\xk{\cos^p\theta+\sin^p\theta}e^{-\frac{r^2}{2a_i^2}}\dd r\\
+=&\frac{1}{\sqrt{\pi}}2^{\frac{p}{2}+1}\Gamma\xk{\frac{p+1}{2}}a_i^p
+\end{align*}
+可得
+\begin{align*}
+\int_{\cc^\infty}\sum_{i=1}^\infty \xk{|x_i|^p+|y_i|^p}\dd\mathcal{N}=&\frac{2^{\frac{p}{2}+1}\Gamma\xk{\frac{p+1}{2}}}{\sqrt{\pi}}\sum_{i=1}^\infty a_i^p\\
+\leq&\frac{2^{\frac{p}{2}+1}\Gamma\xk{\frac{p+1}{2}}}{\sqrt{\pi}}\sum_{i=1}^\infty a_i<+\infty.
+\end{align*}
+故 $\sum_{i=1}^{\infty}\xk{\jd{x_i}^p+\jd{y_i}^p}$ 是 a.e. 有限的, 这说明 $\NN\xk{\lp}=1$.
+\end{proof}
+\begin{remark}[补充]
+上述证明中 $f_i\xk{z}=\jd{x_i}^p+\jd{y_i}^p$ 的可测性由 $\jd{x_i}^p+\jd{y_i}^p$ 的可测性保证.
+\end{remark}
+我们把 $\mathcal{N}$ 在 $\lp$ 上的限制记作 $\mathcal{P}$, 即 $\mathcal{N}|_{\lp}=\mathcal{P}$. 显然 $\lp$ 中球测度有限.
+\begin{lemma}
+$\forall x\in\lp,\,r>0$, $\mathcal{P}(B(x,r))\in(0,+\infty)$.
+\end{lemma}
+\begin{theorem}
+若 $p\in[1,+\infty)$, $\phi\in\colp$, 令
+$$ 0\leq\epsilon\leq
+\begin{cases}
+\left(\fs{\phi}_{\lp}\right)^{-1},& \phi\neq0\\
+0, & \phi=0
+\end{cases}
+$$
+则
+$$
+\int_{\lp}e^{\epsilon|\phi(x)|}\dd\mathcal{P}(x)\leq\int_{\ell^1}e^{\fs{x}_{\ell^1}}\dd\mathcal{P}(x)<+\infty.
+$$
+\end{theorem}
+\begin{proof}
+$\phi=0$ 时显然. 当 $\phi\neq0$ 时, 由
+$|\phi(x)|\leq\fs{\phi}_{\lp}\fs{x}_{\lp}\leq\fs{\phi}_{\lp}\fs{x}_{\ell^1}$ 得 $\epsilon|\phi(x)|\leq\fs{x}_{\ell^1}.$ 加上 $\lp=\ell^1\, a.e.$ 可知第一个不等式成立.\par
+接下来证第二个不等式
+\begin{align*}
+\int_{\ell^1}e^{\fs{x}_{\ell^1}}\dd\PP\xk{x} &= \prod_{i=1}^{\infty}\zk{\frac{1}{2\pi a_i^2}\int_{\rr^2}\exp\xk{\jd{x_i}+\jd{y_i}-\frac{x_i^2+y_i^2}{2a_i^2}}\dd x_i\dd y_i}\\
+&= \prod_{i=1}^{\infty}\zk{\frac{2}{\pi a_{i}^{2}}\xk{\int_0^\infty\exp\xk{x_i-\frac{x_i^2}{2a_i^2}}\dd x_i}^2}\\
+&= \prod_{i=1}^{\infty}\zk{\frac{2e^{a_i^2}}{\pi a_{i}^{2}}\xk{\int_0^\infty\exp\xk{-\frac{\xk{x_i-a_i^2}^2}{2a_i^2}}\dd x_i}^2}\\
+&= \prod_{i=1}^{\infty}\zk{\frac{2e^{a_i^2}}{\pi a_{i}^{2}}\xk{\int_{-a_i^2}^{\infty}\exp\xk{-\frac{t^2}{2a_i^2}}\dd t}^{2}}\\
+&= \prod_{i=1}^{\infty}\zk{\frac{2e^{a_i^2}}{\pi a_{i}^{2}}\xk{\int_{-a_i^2}^{0}\exp\xk{-\frac{t^2}{2a_i^2}}\dd t+\frac{\sqrt{2\pi}a_i}{2}}^2}\\
+&\leq \prod_{i=1}^{\infty}\zk{\frac{2e^{a_i^2}}{\pi a_{i}^{2}}\xk{a_i^2+\frac{\sqrt{2\pi}a_i}{2}}^2}\\
+&= \prod_{i=1}^{\infty}\zk{e^{a_{i}^{2}}\xk{\frac{\sqrt{2}a_{i}}{\sqrt{\pi}}+1}^2}<+\infty.\qedhere
+\end{align*}
+\end{proof}
+\begin{corollary}
+若 $p\in[1,+\infty)$, 则 $\exists c_{p}>0$, 使得
+\[\int_{\lp}e^{c_{p}\fs{z}_{\lp}^{2}}\dd\PP<+\infty.\]
+\end{corollary}
+\begin{proof}[补充证明]
+只需要证明 $p=1$ 的情况, 其余情况注意到 $\fs{z}_{\lp}\leq\fs{z}_{\ell^1}$, 则显然.
+\begingroup
+\allowdisplaybreaks
+\begin{align*}
+\int_{\lp}e^{c_{1}\fs{z}_{\ell^1}^{2}}&\leq \int_{\lp}\lim_{n\toi}e^{\,c_{1}\zk{\sum\limits_{i=1}\limits^{n}\xk{\jd{x_{i}}+\jd{y_{i}}}}^{2}}\dd\PP=\lim _{n\toi}\int_{\lp}e^{\,c_{1}\zk{\sum\limits_{i=1}\limits^{n}\xk{\jd{x_{i}}+\jd{y_{i}}}}^{2}}\dd\PP\\
+&= \lim _{n\toi}\frac{1}{\xk{2\pi}^{n}\prod\limits_{i=1}\limits^{n}a_{i}^{2}}\int_{\rr^{2n}}e^{\,c_{1}\zk{\sum\limits_{i=1}\limits^{n}\xk{\jd{x_{i}}+\jd{y_{i}}}}^{2}}e^{\,\sum\limits_{i=1}\limits^{n}-\frac{x_{i}^{2}+y_{i}^{2}}{2a_{i}^{2}}}\dd m\\
+&= \lim _{n\toi}\frac{1}{\pi^{n}\prod\limits_{i=1}\limits^{n}a_{i}^{2}}\int_{\Omega}\prod_{i=1}^{n}r_{i}e^{\,c_{1}\zk{\sum\limits_{i=1}\limits^{n}r_{i}\xk{\cos\theta_{i}+\sin\theta_{i}}}^{2}}e^{\,\sum\limits_{i=1}\limits^{n}-\frac{r_{i}^{2}}{2a_{i}^{2}}}\dd m\\
+&\leq \lim _{n\toi}\frac{1}{2^{n}\prod\limits_{i=1}\limits^{n}a_{i}^{2}}\int_{r_{i}\in[0,+\infty)}\prod_{i=1}^{n}r_{i}e^{\,2c_{1}\xk{\sum\limits_{i=1}\limits^{n}r_{i}}^2}e^{\,\sum\limits_{i=1}\limits^{n}-\frac{r_{i}^{2}}{2a_{i}^{2}}}\dd m\\
+&= \lim _{n\toi}\int_{r_{i}\in[0,+\infty)}\prod_{i=1}^{n}r_{i}e^{\,4c_{1}\xk{\sum\limits_{i=1}\limits^{n}a_{i}r_{i}}^{2}}e^{\,\sum\limits_{i=1}\limits^{n}-r_{i}^{2}}\dd m\\
+&\leq \lim _{n\toi}\int_{r_{i}\in[0,+\infty)}\prod_{i=1}^{n}r_{i}e^{\,4c_{1}\sum\limits_{i=1}\limits^{n}r_{i}^{2}}e^{\,\sum\limits_{i=1}\limits^{n}-r_{i}^{2}}\dd m.
+\end{align*}
+\endgroup
+其中 $m$ 为勒贝格测度, $\Omega=\dk{\theta_{i}\in\zk{0,\frac{\pi}{2}},r_{i}\in[0,+\infty)}$. 取 $c_{1}=\frac{1}{8}$, 则有
+\begin{equation*}
+\int_{\lp}e^{c_{1}\fs{z}_{\ell^1}^{2}}\dd\PP\leq 1.\qedhere
+\end{equation*}
+\end{proof}

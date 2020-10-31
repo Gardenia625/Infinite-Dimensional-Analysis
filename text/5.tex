@@ -1,0 +1,243 @@
+\section{微分}
+在微积分中, 设 $U\subset\rr$ 为一个非空开集, $f:U\to\rr$, $\forall x\in U$, 若存在 $f'\xk{x}\in\rr$ 使得 
+\[\lim _{\Delta x\to 0}\frac{\jd{f\xk{x+\Delta x}-f\xk{x}-f'\xk{x}\Delta x}}{\jd{\Delta x}}=0,\]
+我们称 $f$ 在点 $x$ 处可微, 或 $f$ 在点 $x$ 处可导.\par 
+但一般地, 设 $X$ 和 $Y$ 为拓扑线性空间(实),  $U\subset X$ 为非空开集, $f:U\to Y$, $\forall x\in U$, $\forall T\in L\xk{X,Y}$, 我们需要新的数学结构来描述下式左侧是右侧的``高阶无穷小'',
+\[f\xk{x+\Delta x}-f\xk{x}-T\Delta x\quad vs.\quad \Delta x\ (\Delta\to 0).\]
+\begin{definition}
+若 $X$ 和 $Y$ 为赋范空间, $U\subset X$ 为非空开集, $f:U\to Y$, 对于 $x\in U$, 若 $\exists T_{x}\in L\xk{X,Y}$, 使得
+\[\lim _{\Delta x\to 0}\frac{\fs{f\xk{x+\Delta x}-f\xk{x}-T\Delta x}}{\fs{\Delta x}}=0,\]
+则称 $f$ 在点 $x$ 处可微\lk可导\rk, 特别地若 $f$ 在 $U$ 上处处可微, 则称 $f$ 是 $U$ 到 $Y$ 的可微函数. 映射 $D:U\to L\xk{X,Y},\,x\mapsto T_{x}$ 成为 $f$ 的微分.
+\end{definition}
+\begin{proposition}[补充 1]
+若 $f$ 在 $x$ 处可微, 则 $f$ 在 $x$ 处连续.
+\end{proposition}
+\begin{proof}[补充证明]
+注意到
+\[\frac{\fs{f\xk{x+\Delta x}-f\xk{x}}}{\fs{\Delta x}}\leq\frac{\fs{f\xk{x+\Delta x}-f\xk{x}-T_{x}\Delta x}}{\fs{\Delta x}}+\fs{T_{x}},\]
+所以
+\[\limsup_{\Delta x\to 0}\frac{\fs{f\xk{x+\Delta x}-f\xk{x}}}{\fs{\Delta x}}\leq\fs{T_{x}},\]
+由数学分析知
+\begin{equation*}
+\lim _{\Delta x\to 0}\fs{f\xk{x+\Delta x}-f\xk{x}}=0.\qedhere
+\end{equation*}
+\end{proof}
+\begin{proposition}[补充 2]
+若 $f$ 在 $x$ 处可微, 则 $f$ 在 $x$ 处微分唯一, 从而映射 $D$ 良定.
+\end{proposition}
+\begin{proof}[补充证明]
+设 $T_{x}$ 和 $T'_{x}$ 满足
+\[\lim _{\Delta x\to 0}\frac{\fs{f\xk{x+\Delta x}-f\xk{x}-T_{x}\Delta x}}{\fs{\Delta x}}=\lim _{\Delta x\to 0}\frac{\fs{f\xk{x+\Delta x}-f\xk{x}-T'_{x}\Delta x}}{\fs{\Delta x}}=0,\]
+则由
+\begin{align*}
+&\; \frac{\fs{T_{x}\Delta x-T'_{x}\Delta x}}{\fs{\Delta x}}\\
+\leq &\; \frac{\fs{f\xk{x+\Delta x}-f\xk{x}-T_{x}\Delta x}}{\fs{\Delta x}}+\frac{\fs{f\xk{x+\Delta x}-f\xk{x}-T_{x}'\Delta x}}{\fs{\Delta x}}
+\end{align*}
+可知
+\[\lim _{\Delta\to 0}\frac{\fs{T_{x}\Delta x-T'_{x}\Delta x}}{\fs{\Delta x}}=0.\]
+也就是说 $\forall\eps>0$, $\exists\delta>0$, 使得所有满足 $\fs{\Delta x}\leq\delta$ 的 $\Delta x$ 都有 $x+\Delta x\in U$ 且 $\fs{T_{x}\Delta x-T'_{x}\Delta x}\leq\eps\fs{\Delta x}$.\par 
+显然 (经典泛函习题)
+\[\sup _{\fs{y}\leq\delta}\fs{T_{x}\xk{y}-T'_{x}\xk{y}}=\delta\fs{T_{x}-T'_{x}},\]
+故 $\delta\fs{T_{x}-T'_{x}}\leq\eps\delta\Rightarrow\fs{T_{x}-T'_{x}}\leq\eps$, 由 $\eps$ 任意性, $T_{x}=T'_{x}$.
+\end{proof}
+\begin{proposition}[补充 3]
+设 $f,g:U\to Y$ 在 $x$ 处可微, 则 $\lambda f+\mu g$ 在 $x$ 处也可微, 且 $D\xk{\lambda f+\mu g}=\lambda Df+\mu Dg$.
+\end{proposition}
+\begin{proof}[补充证明]
+这可由
+\begin{align*}
+&\;\frac{\fs{\lambda f\xk{x+\Delta x}+\mu g\xk{x+\Delta x}-\lambda f\xk{x}-\mu g\xk{x}-\zk{\lambda Df\xk{x}+\mu Dg\xk{x}}\Delta x}}{\fs{\Delta x}}\\
+\leq&\;\jd{\lambda}\frac{\fs{f\xk{x+\Delta x}-f\xk{x}-Df\xk{x}\Delta x}}{\fs{\Delta x}}+\jd{\mu}\frac{\fs{g\xk{x+\Delta x}-g\xk{x}-Dg\xk{x}\Delta x}}{\fs{\Delta x}}
+\end{align*}
+得出.
+\end{proof}
+\begin{proposition}[补充 4]
+若 $U\subset X$ 为非空开集, $f:U\to Y$, $g:Y\to Z$, $f$ 在 $x$ 处可微, $g$ 在 $f\xk{x}$ 处也可微, 则 $g\xk{f}$ 在 $x$ 处可微, 且 $Dg\xk{f}\xk{x}=Dg\zk{f\xk{x}}\circ Df\xk{x}$.
+\end{proposition}
+\begin{proof}[补充证明]
+考虑
+\[\frac{\fs{g\zk{f\xk{x+\Delta x}}-g\zk{f\xk{x}}-Dg\zk{f\xk{x}}\circ Df\xk{x}\Delta x}}{\fs{\Delta x}}.\]
+
+当 $\fs{\Delta x}\to 0$ 时, 有 $\fs{f\xk{x+\Delta x}-f\xk{x}}\to 0$, 故 $\forall \eps>0$, $\exists\delta>0$, 使得当 $\fs{\Delta x}\leq\delta$ 时有
+\begin{align*}
+&\; \fs{g\zk{f\xk{x}+f\xk{x+\Delta x}-f\xk{x}}-g\zk{f\xk{x}}-Dg\zk{f\xk{x}}\zk{f\xk{x+\Delta x}-f\xk{x}}}\\
+\leq &\; \eps\fs{f\xk{x+\Delta x}-f\xk{x}}
+\end{align*}
+和 $\fs{f\xk{x+\Delta x}-f\xk{x}-Df\xk{x}\Delta x}\leq\eps\fs{\Delta x}$ 成立, 于是
+\begin{align*}
+&\; \fs{g\zk{f\xk{x+\Delta x}}-g\zk{f\xk{x}}-Dg\zk{f\xk{x}}\circ Df\xk{x}\Delta x}\\
+\leq &\; \eps\fs{f\xk{x+\Delta x}-f\xk{x}}+\fs{Dg\zk{f\xk{x}}\zk{f\xk{x+\Delta x}-f\xk{x}}-Dg\zk{f\xk{x}}\circ Df\xk{x}\Delta x}\\
+\leq &\; \eps\fs{f\xk{x+\Delta x}-f\xk{x}}+\eps\fs{Dg\zk{f\xk{x}}}\fs{\Delta x}.
+\end{align*}
+两边同除 $\fs{\Delta x}$ 并令 $\fs{\Delta x}\to 0$, 再结合 $\eps$ 任意性就完成了证明.
+\end{proof}
+\begin{proposition}[补充 5]
+设 $f$ 为 $X$ 到 $Y$ 的连续线性算子, 则 $Df\equiv f$.
+\end{proposition}
+\begin{proof}[补充证明]
+这是因为
+\[\frac{\fs{f\xk{x+\Delta x}-f\xk{x}-f\xk{\Delta x}}}{\fs{\Delta x}}=0.\]
+\end{proof}
+\begin{definition}
+设 $X$, $Y$ 和 $Z$ 为三个实 Banach 空间, $U\subset X\times Y$ 为非空开集. $f:U\to Z$, $\forall\xk{x,y}\in U$, 若存在 $D_{1}f\xk{x,y}\in L\xk{X,Z}$ 使得
+\[\lim _{\Delta x\to 0}\frac{\fs{f\xk{x+\Delta x,y}-f\xk{x,y}-D_{1}f\xk{x,y}\Delta x}}{\fs{\Delta x}}=0,\]
+则称 $f$ 在点 $\xk{x,y}$ 处关于第一个变量可导\lk可微\rk, 称 $D_{1}f\xk{x,y}$ 为 $f$ 在点 $\xk{x,y}$ 处关于第一个变量的偏导数.\par 
+若 $D_{1}:U\to L\xk{X,Z},\,\xk{x,y}\mapsto D_{1}f\xk{x,y}$ 是连续的, 则称 $f$ 关于第一个变量是连续可微\lk可导\rk的.
+\end{definition}
+\begin{lemma}
+假设 $X$ 为一个实赋范空间, $f$ 为从 $\zk{0,1}$ 到 X 的连续可微映射 \lk 可在左右端点定义左右导数\rk. 同时 $\phi$ 为从 $\zk{0,1}$ 到 $\rr$ 的一个连续可微映射, 如果 $\fs{D f\xk{t}}\leq\phi'\xk{t}$, $\forall t\in\xk{0,1}$ 成立, 则有 $\fs{f\xk{1}-f\xk{0}}\leq\phi\xk{1}-\phi\xk{0}$.
+\end{lemma}
+\begin{proof}
+给定 $\eps>0$, 令
+\[A=\jh{b}{\forall 0\leq t<b\leq 1,\,\fs{f\xk{t}-f\xk{0}}\leq\phi\xk{t}-\phi\xk{0}+t\cdot\eps},\]
+显然 $0\in A$, 令 $b_1=\sup A$, 则 $A=\zk{0,b_1}$. 只需证 $b_{1}=1$.\par
+若 $b_{1}<1$, 由定义知存在 $0<r_{1}<1$ 使得 $\forall b_{1}\leq b<b_{1}+r_{1}$ 有
+\[\fs{f\xk{b}-f\xk{b_{1}}-Df\xk{b_{1}}\xk{b-b_{1}}}\leq\frac{\epsilon}{2}\cdot\jd{b-b_{1}},\]
+以及
+\[\jd{\phi\xk{b}-\phi\xk{b_{1}}-\phi'\xk{b_{1}}\xk{b-b_{1}}}\leq\frac{\epsilon}{2}\cdot\jd{b-b_{1}}.\]
+则
+\begin{align*}
+&\;\fs{f\xk{b}-f\xk{b_{1}}}\\
+\leq&\;\fs{f\xk{b}-f\xk{b_{1}}-Df\xk{b_{1}}\xk{b-b_{1}}}+\fs{Df\xk{b_{1}}\xk{b-b_{1}}}\\
+\leq&\;\frac{\epsilon}{2}\cdot\jd{b-b_{1}}+\fs{Df\xk{b_{1}}}\cdot\jd{b-b_{1}}\\
+\leq&\;\frac{\epsilon}{2}\cdot\jd{b-b_{1}}+\phi'\xk{b_{1}}\jd{b-b_{1}}\\
+\leq&\;\eps\cdot\jd{b-b_{1}}+\zk{\phi\xk{b}-\phi\xk{b_{1}}}\qedhere
+\end{align*}
+\end{proof}
+我们给出这个引理稍作修改后版本及其证明.
+\begin{lemma}[补充]
+假设 X 为一个实赋范空间, f 为从 $\zk{a,b}$ 到 X 的连续可微映射, 那么 $\exists\lambda\in\zk{0,1}$, 使得 $\fs{f\xk{b}-f\xk{a}}\leq\fs{Df\xk{\lambda a+\xk{1-\lambda}b}}\cdot\jd{b-a}$.\par 
+若还有 $\phi$ 为从 $\zk{a,b}$ 到 $\rr$ 的可微且导函数可积的映射, 且 $\fs{D f\xk{t}}\leq\phi'\xk{t}$, 那么 $\fs{f\xk{b}-f\xk{a}}\leq\phi\xk{b}-\phi\xk{a}$.
+\end{lemma}
+\begin{proof}[补充证明]
+由泛函延拓定理, 取 $h\in X^*$, $\fs{h}=1$, $h\zk{f\xk{b}-f\xk{a}}=\fs{f\xk{b}-f\xk{a}}$.\par 
+令 $\Phi\xk{\eta}=h\zk{f\xk{a+\eta\xk{b-a}}}$, $\Phi\xk{1}-\Phi\xk{0}=\fs{f\xk{b}-f\xk{a}}$. 则
+\begin{align*}
+\Phi'\xk{\eta_{0}}=&\; \lim _{\eta\to\eta_{0}}\frac{h\zk{f\xk{a+\eta\xk{b-a}}}-h\zk{f\xk{a+\eta_{0}\xk{b-a}}}}{\eta-\eta_{0}}\\
+=&\; \lim _{\eta\to\eta_{0}}h\zk{\frac{f\xk{a+\eta\xk{b-a}}-f\xk{a+\eta_{0}\xk{b-a}}}{\eta-\eta_{0}}}\\
+=&\; \lim _{\eta\to\eta_{0}}h\zk{\frac{f\xk{a+\eta\xk{b-a}}-f\xk{a+\eta_{0}\xk{b-a}}}{\xk{\eta-\eta_{0}}{b-a}}}\xk{b-a}\\
+=&\;h\zk{Df\xk{a+\eta_{0}\xk{b-a}}\xk{1}}\xk{b-a}.
+\end{align*}
+
+故 $\exists\lambda\in\zk{0,1}$, 使得
+\begin{align*}
+\fs{f\xk{b}-f\xk{a}}&=\jd{\Phi\xk{1}-\Phi\xk{0}}\\
+&= \jd{\Phi'\xk{a+\lambda\xk{b-a}}}\\
+&\leq \jd{Df\xk{a+\eta_{0}\xk{b-a}}\xk{1}}\cdot\jd{b-a}\\
+&= \fs{Df\xk{a+\eta_{0}\xk{b-a}}}\cdot\jd{b-a}.
+\end{align*}
+
+此处若有 $\fs{Df\xk{t}}\leq\phi'\xk{t}$, 则
+\[\Phi'\xk{\eta}\leq \fs{Df\xk{a+\eta_{0}\xk{b-a}}}\cdot\jd{b-a}\leq \phi'\xk{a+\eta\xk{b-a}}\cdot\jd{b-a},\]
+则
+\begin{align*}
+\fs{f\xk{b}-f\xk{a}}&= \int_{0}^{1}\Phi'\xk{\eta}\dd\eta\\
+&\leq \jd{b-a}\int_{0}^{1}\phi'\xk{a+\eta\xk{b-a}}\dd\eta\\
+&=\frac{\jd{b-a}\cdot\zk{\phi\xk{b}-\phi\xk{a}}}{b-a}\\
+&=\phi\xk{b}-\phi\xk{a}.\qedhere
+\end{align*}
+\end{proof}
+\begin{corollary}
+\label{zhongzhi}
+假设 X 和 Y 为实赋范空间, $U\subset X$ 为非空开集, $f:U\to Y$ 连续可微. 若对于 $\forall\lambda\in\zk{0,1}$ 有 $\lambda x_{1}+\xk{1-\lambda}x_{2}\in U$, 则
+\[\fs{f\xk{x_{2}}-f\xk{x_{1}}}\leq\fs{x_{2}-x_{1}}\cdot\sup _{\lambda\in\zk{0,1}}\fs{Df\xk{\lambda x_{1}+\xk{1-\lambda}x_{2}}}.\]
+或者 $\exists\theta\in\zk{0,1}$,
+\[\fs{f\xk{x_{2}}-f\xk{x_{1}}}\leq\fs{x_{2}-x_{1}}\cdot\fs{Df\xk{\theta x_{1}+\xk{1-\theta}x_{2}}}.\]
+\end{corollary}
+\begin{proof}[补充证明]
+令 $g\xk{\lambda}=f\xk{\lambda x_{1}+\xk{1-\lambda}x_{2}}$, 则 $g\xk{\lambda}:\rr\to Y$ 是连续可微的, 故
+\begin{align*}
+\fs{g\xk{1}-g\xk{0}}&= \fs{f\xk{x_{2}}-f\xk{x_{1}}}\\
+&\leq \fs{x_{2}-x_{1}}\cdot \fs{Df\xk{\lambda x_{1}+\xk{1-\lambda}x_{2}}}\\
+&\leq \fs{x_{2}-x_{1}}\cdot\sup _{\lambda\in\zk{0,1}}\fs{Df\xk{\lambda x_{1}+\xk{1-\lambda}x_{2}}}.\qedhere
+\end{align*}
+\end{proof}
+为了更清晰地看到下面的定理, 我们给出如下推论.
+\begin{corollary}[推论]
+设 $X,Y$ 为实赋范空间, $U\subset X$ 为非空开集, $f:U\to Y$ 连续可微, $T\in L\xk{X,Y}$. 若 $\forall\lambda\in\zk{0,1}$, 有 $\lambda x_{1}+\xk{1-\lambda}x_{2}\in U$, 则
+\[\fs{f\xk{x_{2}}-f\xk{x_{1}}-T\xk{x_{2}-x_{1}}}\leq\fs{x_{2}-x_{1}}\cdot\sup _{\lambda\in\zk{0,1}}\fs{Df\xk{\lambda x_{1}+\xk{1-\lambda}x_{2}}-T}.\]
+或者 $\exists\theta\in\zk{0,1}$,
+\[\fs{f\xk{x_{2}}-f\xk{x_{1}}-T\xk{x_{2}-x_{1}}}\leq\fs{x_{2}-x_{1}}\cdot\fs{Df\xk{\theta x_{1}+\xk{1-\theta}x_{2}}-T}.\]
+\end{corollary}
+\begin{proof}[补充证明]
+令 $g=f-T$, 仿照推论 \ref{zhongzhi} 的证明即可.
+\end{proof}
+\begin{proposition}
+假设 $X$, $Y$ 和 $Z$ 为三个实赋范空间, $U\subset X\times Y$ 为非空开集. $f:U\to Z$ 为连续映射, 则 $f$ 连续可微的充要条件为 $f$ 在 $U$ 上关于两个自变量偏可导且映射 $D_{1}f$, $D_{2}f$ 分别为从 $U$ 到 $L\xk{X,Z}$ 和 $L\xk{Y,Z}$ 的连续映射, 此时
+\[Df\xk{x,y}\xk{x_{1},y_{1}}=D_{1}f\xk{x,y}x_{1}+D_{2}f\xk{x,y}y_{1},\ \forall\xk{x,y}\in U,\ \xk{x_{1},y_{1}}\in X\times Y.\]
+\end{proposition}
+\begin{proof}[补充证明]
+首先注意到 $\frac{\jd{x}}{\sqrt{x^{2}+y^{2}}}$ 和 $\frac{\jd{y}}{\sqrt{x^{2}+y^{2}}}$ 有界. 为便于书写, 不妨设 $f\xk{x,y}=0$.
+\begingroup
+\allowdisplaybreaks
+\begin{align*}
+&\; \frac{\fs{f\xk{x+k,y+h}-\zk{D_{1}f\xk{x,y}k+D_{2}f\xk{x,y}h}}}{\sqrt{\fs{k}^{2}+\fs{h}^{2}}}\\
+=&\; \frac{\fs{f\xk{x+k,y+h}-f\xk{x+k,y}+f\xk{x+k,y}-\zk{D_{1}f\xk{x,y}k+D_{2}f\xk{x,y}h}}}{\sqrt{\fs{k}^{2}+\fs{h}^{2}}}\\
+\leq&\; \frac{\fs{f\xk{x+k,y+h}-f\xk{x+k,y}-D_{2}f\xk{x,y}h}}{\sqrt{\fs{k}^{2}+\fs{h}^{2}}}+\frac{\fs{f\xk{x+k,y}-D_{1}f\xk{x,y}k}}{\sqrt{\fs{k}^{2}+\fs{h}^{2}}}\\
+\leq&\; \frac{\fs{D_{2}f\xk{x+k,y+\theta h}-D_{2}f\xk{x,y}}\cdot\fs{h}}{\sqrt{\fs{k}^{2}+\fs{h}^{2}}}+\frac{\fs{D_{1}f\xk{x+\eta k,y}-D_{1}f\xk{x,y}}\cdot\fs{k}}{\sqrt{\fs{k}^{2}+\fs{h}^{2}}},
+\end{align*}
+\endgroup
+再结合偏导数连续性即可.
+\end{proof}
+\begin{proof}
+必要性显然, 只需证充分性.\par 
+对于任意给定的 $\xk{x,y}\in U$ 与 $\eps>0$, 首先存在正数 $r$, 使得对任意满足 $\fs{x_{1}}<r_{1}$ 的 $x_{1}\in X$. 有
+\[\fs{f\xk{x+x_{1},y}+f\xk{x,y}-D_{1}f\xk{x,y}x_{1}}\leq\eps\fs{x_{1}}.\]
+由假设存在正数 $r_{2}$, 使得对任意满足 $\fs{x_{1}}<r_{2}$, $\fs{y_{1}}<r_{2}$ 的 $\xk{x_{1},y_{1}}\in X\times Y$ 有 $\xk{x_{1},y_{1}}\in U$. 再由之前的中值定理可知对任意满足 $\fs{x_{1}}<r_{2}$ 和 $\fs{y_{1}}<r_{2}$ 的 $\xk{x_{1},y_{1}}\in X\times Y$ 有
+\begin{align*}
+&\;\fs{f\xk{x+x_{1},y+y_{1}}-f\xk{x+x_{1},y}-\zk{D_{2}f\xk{x+x_{1},y}y_{1}-D_{2}f\xk{x+x_{1},y}0}}\\
+\leq&\;\fs{y_{1}}\cdot\sup _{t\in\zk{0,1}}\fs{D_{2}f\xk{x+x_{1},y+ty_{1}}-D_{2}f\xk{x+x_{1},y}}
+\end{align*}
+由 $D_{2}f$ 的连续性可知存在正数 $r_{3}$ 使得
+\[\sup _{\fs{x_{1}}\leq r_{3}}\fs{D_{2}f\xk{x+x_{1},y}-D_{2}f\xk{x,y}}\leq\eps\]
+与
+\[\sup _{\fs{x_{1}}\leq r_{3},\fs{y_{1}}\leq r_{3}}\fs{D_{2}f\xk{x+x_{1},y+y_{1}}-D_{2}f\xk{x+x_{1},y}}\leq\eps\]
+令 $r=\min\dk{r_{1},r_{2},r_{3}}$, 则对任意满足 $\fs{x_{1}}<r$, $\fs{y_{1}}<r$ 的 $\xk{x_{1},y_{1}}\in X\times Y$ 有
+\begin{align*}
+&\;\fs{f\xk{x+x_{1},y+y_{1}}-f\xk{x,y}-D_{1}f\xk{x,y}x_{1}-D_{2}f\xk{x,y}y_{1}}\\
+\leq&\;\fs{f\xk{x+x_{1},y+y_{1}}-f\xk{x+x_{1},y}-D_{2}f\xk{x,y}y_{1}}\\
+&+\fs{f\xk{x+x_{1},y}-f\xk{x,y}-D_{1}f\xk{x,y}x_{1}}\\
+\leq&\;\fs{f\xk{x+x_{1},y+y_{1}}-f\xk{x+x_{1},y}-D_{2}f\xk{x+x_{1},y}y_{1}}\\
+&+\fs{\zk{D_{2}f\xk{x+x_{1},y}-D_{2}f\xk{x,y}}y_{1}}+\eps\fs{x_{1}}\\
+\leq&\;\eps\fs{y_{1}}+\eps\fs{y_{1}}+\eps\fs{x_{1}}\\
+\leq&\;3\eps\xk{\fs{x_{1}}+\fs{y_{1}}}.\qedhere
+\end{align*}
+\end{proof}
+\begin{theorem}[不动点定理]
+假设 $X$ 和 $Y$ 为两个实 Banach 空间, $B_{1}$ 和 $B_{2}$ 分别为 $X$ 和 $Y$ 中以 $0$ 为心, $r_{1}$ 和 $r_{2}$ 为半径的非空开球. $v$ 为从 $B_{1}\times B_{2}$ 到 $Y$ 的连续映射且满足
+\[\fs{v\xk{x,y_{1}}-v\xk{x,y_{2}}}\leq C\cdot\fs{y_{1}-y_{2}},\ \forall x\in B,\ y_{1},y_{2}\in B_{2},\]
+其中 $0<C<1$ 为常数. 则如果 $\fs{v\xk{x,0}}\leq r_{2}\xk{1-C}$, $\forall x\in B_{1}$, 则存在唯一的从 $B_{1}$ 到 $B_{2}$ 的映射 $f$ 满足
+\[f\xk{x}=v\xk{x,f\xk{x}},\ \forall x\in B_{1},\]
+此时 f 为连续映射.
+\end{theorem}
+\begin{proof}
+存在性 : 对于 $x\in B_{1}$, 令 $f_{0}\xk{x}=0,f_{1}\xk{x}=v\xk{x,f_{0}\xk{x}}$, 于是 $f_{1}\xk{x}\in B_{2}$.\par 
+令 $f_{2}\xk{x}=v\xk{x,f_{1}\xk{x}}$, 注意到 
+\begin{align*}
+\fs{f_{2}\xk{x}} & = \fs{f_{2}\xk{x}-f_{1}\xk{x}}+\fs{f_{1}\xk{x}}\\
+& = \fs{v\xk{x,f_{1}\xk{x}}-v\xk{x,f_{0}\xk{x}}}+r_{2}\xk{1-C}\\
+& \leq C\fs{f_{1}\xk{x}}+r_{2}\xk{1-C}\\
+& \leq \xk{C+1}\xk{1-C}r_{2}\\
+& = \xk{1-C^{2}}r_{2}\\
+& < r_{2},
+\end{align*}
+所以 $f_{2}\xk{x}\in B_{2}$.\par 
+采用归纳法可得到 $\dk{f_{k}\xk{x}}_{k=0}^{\infty}\subset B_{2}$ 满足 
+\[\fs{f_{k}\xk{x}-f_{k-1}\xk{x}}\leq C^{k}\fs{f_{1}\xk{x}},\ 1\leq k\leq \infty,\]
+则
+\begin{align*}
+\fs{f_{n}\xk{x}} & \leq\sum_{k=1}^{n}\fs{f_{k}\xk{x}-f_{k-1}\xk{x}}\\
+& \leq \sum_{k=1}^{n}C^{k}\fs{f_{1}\xk{x}}\\
+& \leq \xk{\sum_{k=1}^{n}C^{k}}\xk{1-C}r_{2}\\
+& \leq C\xk{\sum_{k=0}^{n-1}C^{k}}\xk{1-C}r_{2}.
+\end{align*}
+令 $n\to\infty$, 记 $f\xk{x}=\lim _{n\toi}f_{n}\xk{x}$, 则 $\fs{f\xk{x}}\leq C\cdot r_{2}<r_{2}$, 所以 $f\xk{x}\in B_{2}$.\par 
+唯一性 : 假设存在映射 $g:B_{1}\to B_{2}$, 使得 $v\xk{x,g\xk{x}}=g\xk{x}$, $\forall x\in B$, 则对 $\forall x\in B_{1}$ 有
+\[\fs{f\xk{x}-g\xk{x}}=\fs{v\xk{x,f\xk{x}}-v\xk{x,g\xk{x}}}\leq C\fs{f\xk{x}-g\xk{x}},\]
+所以 $f\xk{x}=g\xk{x}$.\par 
+连续性 : 通过证明一致收敛可得.
+\end{proof}
+\begin{theorem}[隐函数存在定理]
+假设 $X$, $Y$ 和 $Z$ 为三个实赋范空间, $U$ 为 $X\times Y$ 的一个非空开子集, $f$ 为从 $U$ 到 $Z$ 的一个连续可微映射. 对于 $\xk{x_{0},y_{0}}\in U$, 若 $f\xk{x_{0},y_{0}}=0$ 且 $D_{2}f\xk{x_{0},y_{0}}$ 为 $Y$ 到 $Z$ 的一个具有连续逆的连续实线性算子. 则存在 $x_{0}$ 的邻域 $U_{0}$ 满足对 $x_{0}$ 的每个开连通邻域 $U_{1}$, 存在唯一的从 $U_{1}$ 到 $Z$ 的连续可微映射 $u$ 满足 $u\xk{x_{0}}=y_{0}$, $\xk{x,u\xk{x}}\in U$, $f\xk{x,u\xk{x}}=0$, $\forall x\in U_{1}$. 同时其 Fr\'echet 导数为
+\[D u\xk{x}=-\zk{D_{2}f\xk{x,u\xk{x}}}^{-1}\circ\zk{D_{1}f\xk{x,u\xk{x}}},\ \forall x\in U_{1}.\]
+\end{theorem}

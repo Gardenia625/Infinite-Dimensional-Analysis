@@ -1,0 +1,196 @@
+\section{\texorpdfstring{$L^2(\lp,\PP)$}{}}
+令 $X$ 为实可分 Banach 空间. 用 $X^*$ 表示 $X$ 的对偶. 定义
+\[\mathcal{F}C^\infty_c(X)\dy\jh{f=F(\phi_1,\dots,\phi_n)}{\phi_i\in X^*, F\in C^\infty_c(\rr^n)},\]
+其中 $C^\infty_c(\mathbb{R}^n)$ 是 $\rr^n$ 中所有具有紧支集的光滑函数构成的集合. 然后, 我们用 $\mathscr{F}C^\infty_c(X)$ 表示由 $\mathcal{F}C^\infty_c(X)$ 生成的复线性空间.
+\begin{lemma}
+令 $R=[a_1,b_1]\times\dots\times[a_n,b_n]$, 则存在 $\dk{f_i}^\infty_{i=1}$, $f_i\in C^\infty_c(\rr^n)$ 使得 $f_i\in\rchi_R$.
+\end{lemma}
+\begin{proof}
+当 $n=1$ 时, 对 $\zk{a,b}$, 取
+\[g_i\xk{x}=
+\begin{cases}
+0,&x\leq a\ \text{or}\ x>b\\
+n(x-a),& 0<x\leq a+\frac{1}{n}\\
+1,& a+\frac{1}{n}<x\leq b-\frac{1}{n}\\
+n(b-x),& b-\frac{1}{n}<x\leq b
+\end{cases}
+\]
+则 $g_i\xk{x}\in C_c\xk{\rr}$, $0\leq g_i\xk{x}\leq 1$.\\
+对 $f_i$ 磨光, 设 $j$ 为磨光函数, 取一列 $\delta_i>0$ 使得 $\lim_{i\toi}\delta_n=0$. 令
+\[f_i\xk{x}=\int_{\rr}g_i\xk{y}j_{\delta_{i}}(x-y)\dd y.\]
+由 $g_i\in L^1\xk{\rr}\cap C\xk{\rr}$ 知 $f_i\in\cci\xk{\rr}$. 由 $\jd{f_i}\leq\int_{\rr}j_{\delta}\xk{x-y}\dd y=1$ 知 $f_i$ 一致有界. 可选取 $\dk{\delta_i}$ 的子列 $\dk{\delta_{i_{k}}}$ 使得 $\jd{f_{i_{k}}-g_{i_{k}}}\leq\frac{1}{k}$, 则
+\[\lim _{k\toi}f_{i_{k}}=\lim _{k\toi}g_{i_{k}}=\rchi_{\zk{a,b}}.\]
+
+当 $n>1$ 时, 取 $\jd{f_i^{\xk{j}}}\leq 1$ 使得 $\lim _{i\toi}f_{i}^{\xk{j}}=\rchi_{\zk{a_j,b_j}}$, 则 $f_i=\prod_{j=1}^{n}f_{i}^{\xk{j}}$ 即为所求.
+\end{proof}
+\begin{lemma}
+\label{duichencha}
+令 $(X,\mathscr{A},\mu)$ 为一全有限测度空间, $\mathscr{A}_0$ 是 $X$ 上满足 $\mathscr{A}=\sigma(\mathscr{A}_0)$ 的一个代数. 则对任意 $A\in\mathscr{A}$ 和 $\epsilon>0$, 都存在 $A_0\in\mathscr{A}_0$ 使得 $\mu(A\sj A_0)<\epsilon$.
+\end{lemma}
+\begin{proof}
+令 $\mathcal{F}\dy\jh{A\in\mathscr{A}}{\forall\epsilon>0,\,\exists A_0\in\mathscr{A_0},\,\mu(A\sj A_0)<\epsilon}$. 因此 $\mathscr{A}_0\subset\mathcal{F}\subset\mathscr{A}\subset\sigma(\mathscr{A})$. 接下来只需证明 $\mathcal{F}$ 是一个 $\sigma$ 代数, 也就是说要满足如下三个条件
+\begin{enumerate}[\rm (1)]
+\item $X\in\mathcal{F};$
+\item 如果 $A\in\mathcal{F}$, 则 $A^c\in\mathcal{F};$
+\item 如果 $A_1,A_2,\ldots\in\mathcal{F}$, 则 $\bigcup_{k=1}^\infty A_k\in\mathcal{F}.$
+\end{enumerate}
+
+$(1)$ 是显然的, $(2)$ 可由 $A^c\sj A_0^c=A\sj A_0$ 立即得到. 下证 $(3)$.\par
+令 $A=\bigcup_{k=1}^\infty A_k$. 对所有 $\epsilon>0$, 都存在 $N$ 使得
+$$\mu\left(A-\bigcup_{k=1}^n\right)<\frac{\epsilon}{2},\ \forall n>N,$$
+这是因为 $\lim\limits_{n\to\infty}\mu(A_n)=\mu(A)$.\par
+另一方面, 对所有 $1\leq m<N$, 都存在 $B_m\in\mathscr{A}_0$ 使得 
+$$\mu(A_m\sj B_m)<\frac{\epsilon}{2N}.$$
+
+令 $B=\bigcup_{k=1}^N B_n$, 则 $B\in\mathscr{A}_0$ 且
+\begin{align*}
+\mu(A\sj B)\leq &\ \mu\left[A\sj\left(\bigcup_{k=1}^N A_k\right)\right]+\mu\left[\left(\bigcup_{k=1}^N A_k\right)\sj B\right]\\
+< &\ \frac{\epsilon}{2}+\mu\left[\left(\bigcup_{k=1}^N A_k\right)-B\right]+\mu\left[B-\left(\bigcup_{k=1}^N A_k\right)\right]\\
+< &\ \frac{\epsilon}{2}+\mu\left[\bigcup_{k=1}^N \left(A_k-B_k\right)\right]+\mu\left[\bigcup_{k=1}^N \left(B_k-A_k\right)\right]\\
+< &\ \frac{\epsilon}{2}+\sum_{k=1}^N \mu(A_k\sj B_k)\\
+< &\ \epsilon \qedhere
+\end{align*}
+\end{proof}
+\begin{lemma}[补充的引理 \ref{duichencha} 的加强版]
+令 $(X,\mathscr{A},\mu)$ 为一 $\sigma$ 有限测度空间, $\mathscr{A}_0$ 是 $X$ 上满足 $\mathscr{A}=\sigma(\mathscr{A}_0)$ 的一个代数. 则对任意 $A\in\mathscr{A}$ 如果 $\mu\xk{A}<+\infty$, 则 $\forall\epsilon>0$, $\exists A_0\in\mathscr{A}_0$ 使得 $\mu(A\sj A_0)<\epsilon$.
+\end{lemma}
+\begin{proof}[补充证明]
+因为 $\mu$ 是 $\SA_0$ 上 $\sigma$ 有限测度, 由 Caratheodory 定理, $\sigma\xk{\SA_0}=\SA$ 上的测度是唯一的. 故假设为外测度扩张方法得到的测度在 $\SA$ 上的限制.\par
+$\forall\eps>0$, $\exists A_n\in\SA_0$, 使得 $\bigcup_{k=1}^{\infty}A_k\supset A$ 且 $\sum_{k=1}^{\infty}\mu\xk{A_k}<\mu\xk{A}+\frac{\epsilon}{2}$.\\
+取 $N\geq 1$, 使得 $\sum_{k=N+1}^{\infty}\mu\xk{A_k}<\frac{\epsilon}{2}$, 则有
+\[\mu\xk{A-\bigcup_{k=1}^{N}A_k}\leq\mu\xk{\bigcup_{k=1}^{\infty}A_k-\bigcup_{k=1}^{N}A_k}=\mu\xk{\bigcup_{k=N+1}^{\infty}A_k}\leq\sum_{k=N+1}^{\infty}\mu\xk{A_k}<\frac{\epsilon}{2}\]
+和
+\[\mu\xk{\bigcup_{k=1}^{N}A_k-A}\leq\mu\xk{\bigcup_{k=1}^{\infty}A_k-A}\leq\sum_{k=1}^{\infty}\mu\xk{A_k}-\mu\xk{A}<\frac{\epsilon}{2}.\]
+取 $B=\bigcup_{k=1}^{N}A_k\in F_0$, 则有 $\mu\xk{A\sj B}\leq\eps$.\\
+特别地可以得到引理 \ref{duichencha} 的版本.
+\end{proof}
+
+\begin{theorem}[Stone-Weierstrass 定理]
+设 K 为紧的 Hausdorff 空间, 用 $C(K)$ 表示 K 上所有实值连续函数全体, $C(K)$ 按上确界范数构成一个含幺交换 Banach 代数. 设 $M\subset C(K)$ 为子代数\lk 未必含幺\rk, 若
+\begin{enumerate}[\rm (1)]
+\item  对 $\dk{f_n}\subset M$, $f_n$ 一致收敛到 f, $f\in M$ \lk即 M 是闭子代数\rk.
+\item $\forall x_1\neq x_2\in K$, $\exists g\in M$, $g\xk{x_1}\neq g\xk{x_2}$.
+\item $\forall x\in K$, $\exists g\in M$, $g(x)\neq 0$.\\
+特别地, 若 M 含幺, 则 $\rm(3)$ 自动成立.
+\end{enumerate}
+则 $M=C(K)$.
+\end{theorem}
+\begin{proof}
+记 $f\lor g=\max\dk{f,g}$, $f\land g=\min\dk{f,g}$.\\
+$(1)$ 若 $f\in M$, 则 $\jd{f}\in M$.\\
+证: $\jd{x}\in C\zk{-n,n}$, $\exists P_n(x)$ 为多项式, 使得
+\[\jd{\jd{x}-P_n(x)}\leq\frac{1}{n},\ \forall x\in\zk{-n,n}.\]
+设 $\fs{f}=M$, 当 $n\geq M$ 时, 有
+\[\jd{\jd{f}-P_n\xk{f}}\leq\frac{1}{n},\ \forall x\in\zk{-n,n}.\]
+故 $P_n\xk{f}$ 一致收敛到 $\jd{f}$, 从而 $\jd{f}\in M$.\\
+$(2)$ 若 $f,g\in M$, 则 $f\lor g$, $f\and g\in M$.\\
+证: 注意到 $$f\lor g=\frac{f+g+\jd{f-g}}{2},\ f\land g=\frac{f+g-\jd{f-g}}{2}\in M.$$
+$(3)$ $\forall c_1,c_2\in\rr$, $x_1\neq x_2\in K$, 找到 $f\in M$, 使得 $f\xk{x_1}=c_1$, $f\xk{x_2}=c_2$.\\
+证: $\exists g,h,k\in M$, $g\xk{x_1}\neq g\xk{x_2}$, $h\xk{x_1}\neq$, $k\xk{x_2}\neq 0$. 取
+\[f\xk{x}=c_1\frac{\zk{g\xk{x}-g\xk{x_2}}h\xk{x}}{\zk{g\xk{x_1}-g\xk{x_2}}h\xk{x_2}}+c_2\frac{\zk{g\xk{x}-g\xk{x_1}}k\xk{x}}{\zk{g\xk{x_2}-g\xk{x_1}}k\xk{x_2}},\]
+则 $f\xk{x_1}=c_1$, $f\xk{x_2}=c_2$.\\
+$(4)$ $\forall h\in C(K)$, $\forall\eps>0$, $\exists f\in M$, $\jd{f-h}\leq\eps$.\\
+证: $\forall t\neq s\in K$, 取一个 $f_{ts}\in M$, 使得 $f_{ts}\xk{t}=h\xk{t}$, $f_{ts}\xk{s}=h\xk{s}$. \lk 对 $t=s$ 显然也成立.\rk\\
+$\exists s$ 的开邻域, 在 $U\xk{s}$ 上, $f_{ts}\xk{x}\geq h\xk{x}-\eps$. 考虑所有的 $U\xk{s}$, 也就是 $s$ 遍历 $K$, 故有 $K$ 紧知存在有限覆盖 $s_1,s_2,\dots,s_m$, $K=\bigcup_i U\xk{s_i}$.\\
+取 $f_t\xk{x}=f_{ts_1}\lor f_{ts_2}\lor\cdots\lor f_{ts_m}$, $\forall x\in K$, $\exists U\xk{s_{i_0}}$, $x\in U\xk{s_{i_0}}$. $f_t\xk{x}\geq f_{ts_{i_0}}\geq h\xk{x}-\eps$.\\
+$\exists U\xk{t}$, 在 $U\xk{t}$ 上 $f_t\xk{x}\leq h\xk{x}+\eps$. 让 $t$ 遍历 $K$, 存在有限覆盖 $t_1,t_2,\dots,t_n$, $K=\bigcup_i U\xk{t_i}$.\
+取 $f\xk{x}=f_{t_1}\land f_{t_2}\land\cdots\land f_{t_n}$, $\forall x\in K$, $\exists U\xk{t_{i_0}}$, $x\in U\xk{t_{i_0}}$. $f\xk{x}\leq f_{t_{i_0}}\xk{x}\leq h\xk{x}\eps$.\\
+又显然有 $f\xk{x}\geq h\xk{x}-\eps$, 于是 $\jd{f\xk{x}-h\xk{x}}\leq\eps$.
+\end{proof}
+\begin{theorem}[Stone-Weierstrass 定理的复版本]
+设 K 为紧 Hausdorff 空间, 用 $C\xk{K}$ 表示 K 上所有复值连续函数全体, 其按上确界范数构成一个含幺交换 Banach 代数. 设 $M\subset C\xk{K}$ 为子代数\lk 未必含幺\rk, 若
+\begin{enumerate}[\rm(1)]
+\item 对 $\dk{f_n}\subset M$, $f_n$ 一致收敛到 f, $f\in M$.
+\item $\forall x_1\neq x_2\in K$, $\exists g\in M$, $g\xk{x_1}\neq g\xk{x_2}$.
+\item $\forall x\in K$, $\exists g\in M$, $g\xk{x}\neq 0$.
+\item M 自伴, 即若 $f\in M$, 则 $\mean{f}\in M$.
+\end{enumerate}
+那么有 $M=C\xk{K}$.
+\end{theorem}
+\begin{proof}
+把 M 中所有实值函数记作 $M_\rr$, 把 K 上所有实值连续函数记作 $C_\rr\xk{K}$. 显然 $M_\rr$ 是 $C_\rr\xk{K}$ 的一个子代数, 且满足对一致收敛封闭.\par 
+$\forall s\neq t\in K$, $\exists f\in M$, $f(s)=1$, $f(t)=0$. 又 $\re f=\frac{f+\mean{f}}{2}$, 故 $\re f\xk{s}\neq\re f\xk{t}$, $\re f\in M_\rr$.\par 
+$\forall x\in K$, $\exists g\in M$, $g\xk{x}\neq 0$. 取合适的复数 $\alpha$, 使得 $\re \alpha g(x)\neq 0$.\par 
+故 $M_\rr=C_\rr\xk{K}\Rightarrow C\xk{K}=M$.
+\end{proof}
+\begin{remark}
+要判断 $C\xk{K}$ 的一个子代数 M 在 $C\xk{K}$ 中是否稠密, 可以验证 M 是否具有性质 $(2),\,(3),\,(4)$. 一旦 M 有这种运算性质那么容易验证 $\mean{M}$ 也有, 从而 $\mean{M}=C\xk{K}$.
+\end{remark}
+\begin{proposition}
+$\mathscr{F}C_c^\infty(\lp)$ 和 $\Span\jh{e^{\xs\phi}}{\phi\in\colp}$ 是 $L^2(\lp,\PP)$ 的稠密子空间.
+\end{proposition}
+\begin{proof}
+先证前一半, 我们用 $\rmean{\mathscr{F}C_c^\infty(\lp)}$ 表示 $\mathscr{F}_c^\infty(\lp)$ 在 $L^2(\lp,\PP)$ 中的闭包, 用 $\mathscr{A}_0$ 表示 $\lp$ 中由如下形式的子集生成的代数
+$$\jh{\left(x_i+\xs y_i\right)\in\lp}{\left(x_i,y_i\right)\in\left[a_i,b_i\right]\times\left[c_i,d_i\right],\,i=1,\ldots,k},$$
+其中 $a_i,b_i,c_i,d_i\in\rr$ 满足 $-\infty<a_i<b_i<+\infty$, $-\infty<c_i<d_i<+\infty$, 而 $i=1,\dots,k$, $k\in\nn$.\par
+由于 $\mathcal{B}(\lp)=\jh{A\cap\lp}{A\in\mathcal{B}(\cc^\infty)}=\sigma(\mathscr{A}_0)$, 只需证 $\rchi_A\in\rmean{\SF C_c^\infty(\lp)}$ 对所有 $A\in\mathscr{A}_0$ 成立.\par
+注意到对于 $i\in\nn$, 可定义 $\lp$ 上的函数
+$$\phi_i\left(\left(x_j+\xs y_j\right)\right)=x_i,\ \psi_i\left(\left(x_j+\xs y_j\right)\right)=y_i,$$
+显然 $\phi_i,\psi_i\in(\lp)^*$, 再根据前面的引理可完成这部分证明.\par
+下证后半部分, 设 $f\in C_c^\infty(\rr)$, 对 $M\neq0$, 令 $f_M(x)\dy\sum\limits_{k\in\zz} f(x+2\pi kM)$. 于是 $f_M$ 是周期为 $2\pi M$ 的连续函数, 由 Stone-Weierstrass 逼近定理可知存在多项式 $P_m(\xi,\mean{\xi})$, $\xi\in\cc$, $m\in\nn$ 使得当 $m\to\infty$ 时, $P_m\left(e^{\xs x/M},e^{-\xs x/M}\right)$ 一致收敛于 $f_M(x)$. 特别地, 对所有 $\phi\in(\lp)^*$, 当 $m\to\infty$ 时有 
+$$P_m\left(e^{\xs\frac{\phi}{M}},e^{-\xs\frac{\phi}{M}}\right)\rightrightarrows f_M(\phi).$$
+注意到 $M\to\infty$ 时, $f_M(\phi)\to f(\phi)$, 从而可知 $f(\phi)\in\mean{\Span\left\{e^{\xs\phi},\ y\in(\lp)^*\right\}}$.\par
+类似地, 对 $\forall n\in\nn$, $F\in C_c^\infty(\rr^n)$ 和 $\phi_i\in\colp$, $i\leq i\leq n$ 有
+$$F(\phi_1,\dots,\phi_n)\in\mean{\Span\left\{e^{\xs\phi},\,\phi\in\colp\right\}}.$$
+从而 $\mathscr{F}C_c^\infty(\lp)$ 中的元素都可由 $\Span\jh{e^{\xs\phi}}{\phi\in\colp}$ 中的元素逼近, 这样就完成了证明.
+\end{proof}
+\begin{proof}[补充证明 1]
+证明命题 $\SF\cci\xk{\lp}$ 在 $L^2\xk{\lp,\PP}$ 中稠密\\
+证: 首先我们有
+\[\jd{F\xk{\phi_1,\dots,\phi_n}}\leq M\Rightarrow F\xk{\phi_1,\dots,\phi_n}\in L^2\xk{\lp,\PP}\Rightarrow \SF\cci\xk{\lp}\subset L^2\xk{\lp,\PP}.\]
+由实分析基本结论, 只需要证明 $\rchi_{A}\in\mean{\SF\cci\xk{\lp}}$, $\forall A\in\BB\xk{\lp}$.\par 
+考虑 $\lp$ 中如下集合全体生成的代数 $\SA_{0}$:
+\[X_1\times\cdots\times X_k\times\cc\times\cdots,\,\text{where}\,X_i=\zk{a_i,b_i}\times\zk{c_i,d_i},\,k\in\nn.\]
+
+先证 $\sigma\xk{\SA_{0}}=\BB\xk{\lp}=\BB\xk{\cc^{\infty}}\cap\lp=\BB\xk{\cc^{\infty}}\cap\lp$. 注意到 $\SA_0$ 的生成元都是闭集 (子空间拓扑), 故 $\sigma\xk{\SA_0}\subset\BB\xk{\lp}$. 接下来要证 $\lp$ 中闭集 (子空间拓扑) 都属于 $\sigma\xk{\SA_{0}}$, 从而 $\BB\xk{\lp}\subset\sigma\xk{\SA_{0}}$.\par 
+设 $F=H\bu\cap\lp$, 其中 $H=\bigcup H_a$, 而 $H_a$ 为 $\cc^{\infty}$ 开柱集, 则 $F=\xk{\bigcap H_a\bu}\cap\lp$. 由 Lindelof 性, 存在 $a_i$ 使得 $H=\bigcup H_{a_{i}}$, 下证 $H_{a_{i}}\cap\lp\in\sigma\xk{\SA_{0}}$, 从而 $F\in\sigma\xk{\SA_{0}}$.\par 
+不妨设 $H_{a_{i}}=X_1\times \cdots\times X_k\times\cc\times\cdots$ 为 $\cc$ 的开集, 则
+\[H_{a_{i}}=\xk{X_{1}\times\cc\cdots}\cap\cdots\cap\xk{\cc\times\cdots\times\cc\times X_{k}\times\cc\times\cdots},\]
+这是有限交, 下证每一项与 $\lp$ 求交集后都属于 $\sigma\xk{\SA_{0}}$, 从而 $H_{a_{i}}\cap\lp\in\sigma\xk{\SA_{0}}$.\par 
+不妨只考虑 $X_{1}\times\cc\times\cdots$, 其中 $X_{1}=\xk{a,b}\times\xk{c,d}$ (因为这是拓扑基), 此时
+\[X_{1}\times\cc\times\cdots=\bigcup_{i}T_{i}\times\cc\times\cdots,\,\text{where}\,T_{i}=\zk{a+\frac{1}{i},b-\frac{1}{i}}\times\zk{c+\frac{1}{i},d-\frac{1}{i}}.\]
+这说明的确每一项与 $\lp$ 求交集后都属于 $\sigma\xk{\SA_{0}}$, 故 $\sigma\xk{\SA_{0}}=\BB\xk{\lp}$.\par 
+接下来任取 $\SA_{0}$ 的生成集 $B$, 证 $\rchi_{B}\in\mean{\SF\cci\xk{\lp}}$. 设 $B$ 中非 $\cc$ 的分量的笛卡尔积为 $B'$, 由引理可知, $\exists g_n\in\cci\xk{\rr^{2n}}$, $g_{n}\to\rchi_{B'}$, $g_{n}$ 一致有界, 则由控制收敛定理知
+\[\int_{\cc^{k}}\jd{g_{k}-\rchi_{B'}}^{2}\dd\NN_{a_{1}}\cdots\dd\NN_{a_{k}}\to 0.\]
+取 $\phi_{i}\xk{z}=x_{i}$, $\psi_{i}\xk{z}=y_{i}$, 显然 $\phi_{i},\psi_{i}\in\colp$, 则 $g_{n}\xk{\phi_{1},\dots,\phi_{k},\psi_{1},\dots,\psi_{k}}\in\SF\cci\xk{\lp}$ 且
+\[\int_{\cc^{\infty}}\jd{g_{n}-\rchi_{B}}^{2}\dd\PP=\int_{\cc^{k}}\jd{g_{k}-\rchi_{B'}}^{2}\dd\NN_{a_{1}}\cdots\dd\NN_{a_{k}}\to 0,\]
+故 $\rchi\in\mean{\SF\cci\xk{\lp}}$.\par
+设 $M=\jh{B\in\BB\xk{lp}}{\rchi_{B}\in\mean{\SF\cci\xk{\lp}}}$, 证明 $M$ 是代数 (集族).\\
+$(1)$ 取 $f\in\cci\xk{\rr}$ 使得 $f\xk{0}=1$, 则由 $0\in\colp$ 知 $\mathbf{1}\in\SF\cci\xk{\lp}$, 故 $\lp\in M$.\\
+$(2)$ 设 $B\in M$, $\rchi_{B\bu}=1-\rchi_{B}\in\mean{\SF\cci\xk{\lp}}$.\\
+$(3)$ 设 $B_{1},B_{2}\in M$, $\rchi_{B_{1}}\rchi_{B_{2}}\in M$.\\
+所以 $M$ 是代数. 进一步由 $\SA_{0}$ 生成元属于 $M$ 知 $\SA_{0}\in M$.\par 
+最后就能证明 $\BB\xk{\lp}=M$. 这是因为 $M\subset\BB\xk{\lp}$, 反之 $\forall B\in\BB\xk{\lp},\eps>0$, $\exists B_{0}\in\SA_{0}$, 使得 $\PP\xk{B\sj B_{0}}\leq\eps$, 于是
+\[\int_{\lp}\jd{\rchi_{B_{0}}-\rchi_{B}}^{2}=\int_{B\sj B_{0}}1^{2}\dd\PP=\PP\xk{B\sj B_{0}}\leq\eps.\]
+故 $\rchi_{B}\in\mean{\SF\cci\xk{\lp}}$, 从而 $B\in M$, 从而 $\BB\xk{\lp}\subset M$, 所以 $\BB\xk{\lp}=M$.
+\end{proof}
+\begin{proof}[补充证明 2]
+证明命题 $\Span\jh{e^{\xs\phi}}{\phi\in\colp}$ 在 $L^{2}\xk{\lp,\PP}$ 中稠密.\\
+证: 首先我们有
+\[\int_{\lp}\jd{e^{\xs\phi}}^{2}\dd\PP=\int_{\lp}1^{2}\dd\PP\Rightarrow \Span\jh{e^{\xs\phi}}{\phi\in\colp}\subset L^{2}\xk{\lp,\PP}.\]
+由上一个证明, 我们只需把 $f\xk{\phi_{1},\dots,\phi_{n}}$, $f\in\cci\xk{\rr^{n}}$, $\phi_{i}\in\colp$ 表示为\\
+$\Span\jh{e^{\xs\phi}}{\phi\in\colp}$ 中元素在 $L^{2}\xk{\lp,\PP}$ 中的极限.\par 
+只考虑 $n=1$ 的情况, $n>1$ 时同理.\par 
+设 $f\in\cci\xk{\rr}$, 对 $M\in\nn$, 令 $f_{M}\xk{x}=\sum\limits_{k\in\zz}f\xk{x+2k\pi M}$, 容易发现这是有限和, 且 $f_{M}\in C\xk{\rr}$.\par 
+考虑 $g_{M}\in C\xk{S^1}:S^{1}\to\rr,\,e^{\xs\frac{\theta}{M}}\to f_{M}\xk{\theta}$. 容易验证 $S^{1}$ 上的二元复多项式全体 $\dk{P\xk{\theta,\mean{\theta}}}$ 满足 Stone 定理的条件, 所以存在 $P_{m}\xk{\theta,\mean{\theta}}$ 一致收敛到 $g_{M}\xk{\theta}$, 即
+\[P_{m}\xk{e^{\xs\frac{\theta}{M}},e^{-\xs\frac{\theta}{M}}}\rightrightarrows f_{M}\xk{\theta},\]
+所以
+\[P_{m}\xk{e^{\xs\frac{\phi}{M}},e^{-\xs\frac{\phi}{M}}}\rightrightarrows f_{M}\xk{\phi}.\]
+又 $P_{m}\xk{e^{\xs\frac{\phi}{M}},e^{-\xs\frac{\phi}{M}}}\in\Span\jh{e^{\xs\phi}}{\phi\in\colp}$, 从而 $f_{M}\xk{\phi}\in\SF\cci\xk{\lp}$ (测度有限集上一致收敛可换序).\par 
+$\lim\limits_{M\toi}f_{M}\xk{\phi}=f\xk{\phi}$ 是显然的. 为了让 $f_{M}\xk{\phi}$ 在 $L^{2}$ 意义下收敛到 $f\xk{\phi}$, 设 $f$ 的紧支集 $K$ 含于 $\zk{a,b}$. $\forall x\in\rr$, 满足 $\frac{a-x}{2\pi M}\leq k\leq \frac{b-x}{2\pi M}$ 的整数 $k$ 至多只能取 $\frac{b-x}{2\pi M}-\frac{a-x}{2\pi M}+1=\frac{b-a}{2\pi M}+1$ 项, 这意味着
+\[\jd{f_{M}\xk{x}}\leq\xk{\frac{b-a}{2\pi M}+1}\sup _{x\in K}\jd{f\xk{x}}.\]
+最后, 因为 $f\xk{\phi}\in\SF\cci\xk{\lp}$, 有
+\[\jd{f_{M}\xk{\phi}-f\xk{\phi}}^{2}\leq\xk{\frac{b-a}{2\pi M}+2}^{2}
+\sup_{x\in K}\jd{f\xk{x}}^{2},\]
+再用推广的控制收敛定理即可得证.
+\end{proof}
+
+接下来我们看一个具体的应用.
+\begin{definition}[Fourier 变换]
+假设 $\mu$ 为 $\lp$ 上的一个全有限测度, 定义
+\[\hat{\mu}(\phi)\dy\int_{\lp} e^{-\xs\phi}\dd\mu,\ \phi\in\colp.\]
+我们称 $\hat{\mu}$ 为 $\mu$ 的 Fourier 变换.
+\end{definition}
+\begin{corollary}
+假设 $\mu$ 和 $\nu$ 为 $\lp$ 上的两个全有限测度, 若 $\hat{\mu}=\hat{\nu}$, 则 $\mu=\nu$.
+\end{corollary}
