@@ -1,0 +1,126 @@
+\usepackage{geometry}
+\geometry{
+  top=2.5cm,
+  inner=2.5cm,
+  outer=2cm,
+  bottom=2.5cm,
+  headheight=0.5cm,
+  headsep=0.5cm,
+}
+
+\pagestyle{plain}
+\usepackage{float}
+\usepackage{indentfirst}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\numberwithin{figure}{section}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{amsthm}
+\newtheorem{theorem}{定理}[section]
+\newtheorem{lemma}[theorem]{引理}
+\newtheorem{definition}[theorem]{定义} 
+\newtheorem{proposition}[theorem]{命题}
+\newtheorem{corollary}[theorem]{推论}
+\newtheorem{example}{例}[section]
+\newtheorem*{remark}{注}
+
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+\floatname{algorithm}{算法}  
+\renewcommand{\algorithmicrequire}{\textbf{需要:}}  
+\algnewcommand\algorithmicgoal{\textbf{目标:}}
+\algnewcommand\Goal{\item[\algorithmicgoal]}
+\algnewcommand\algorithmicinput{\textbf{输入:}}
+\algnewcommand\Input{\item[\algorithmicinput]}
+\algnewcommand\algorithmicoutput{\textbf{输出:}}
+\algnewcommand\Output{\item[\algorithmicoutput]}
+
+\usepackage{xpatch}
+\usepackage{hyperref}
+\makeatletter
+\AtBeginDocument{\xpatchcmd{\@thm}{\thm@headpunct{.}}{\thm@headpunct{}}{}{}}
+\makeatother
+% 去掉定理编号后面的点
+\usepackage{mathtools}
+\DeclareRobustCommand{\rchi}{{\mathpalette\irchi\relax}}
+\newcommand{\irchi}[2]{\raisebox{\depth}{$#1\chi$}}
+% 提升 chi 的高度
+\let\oldforall\forall
+\let\forall\undefined
+\DeclareMathOperator{\forall}{\oldforall}
+\let\oldexists\exists
+\let\exists\undefined
+\DeclareMathOperator{\exists}{\oldexists}
+% 优化 forall 和 exists 后面的缩进
+\newcommand{\dd}{\,\mathrm{d}}
+\newcommand{\Span}{\mathrm{span}}
+\newcommand{\ii}{\mathrm{i}}
+\newcommand{\bu}{^{\mathsf{c}}}
+% 补集
+\newcommand{\xs}{\sqrt{\smash{-}1}}
+\newcommand{\re}{\mathrm{Re}\,}
+\newcommand{\im}{\mathrm{Im}\,}
+\newcommand{\toi}{\to\infty}
+\newcommand{\cci}{C_c^\infty}
+
+\newcommand{\BB}{\mathcal{B}}
+\newcommand{\FF}{\mathcal{F}}
+\newcommand{\NN}{\mathcal{N}}
+\newcommand{\PP}{\mathcal{P}}
+
+\newcommand{\cc}{\mathbb{C}}
+\newcommand{\nn}{\mathbb{N}}
+\newcommand{\qq}{\mathbb{Q}}
+\newcommand{\rr}{\mathbb{R}}
+\newcommand{\zz}{\mathbb{Z}}
+
+\newcommand{\SA}{\mathscr{A}}
+\newcommand{\SF}{\mathscr{F}}
+
+\DeclarePairedDelimiter\xkh{(}{)}
+\newcommand{\xk}[1]{\xkh*{#1}}
+\DeclarePairedDelimiter\zkh{[}{]}
+\newcommand{\zk}[1]{\zkh*{#1}}
+\DeclarePairedDelimiter\dkh{\{}{\}}
+\newcommand{\dk}[1]{\dkh*{#1}}
+\DeclarePairedDelimiter\jdz{\vert}{\vert}
+\newcommand{\jd}[1]{\jdz*{#1}}
+\DeclarePairedDelimiter\fanshu{\Vert}{\Vert}
+\newcommand{\fs}[1]{\fanshu*{#1}}
+
+\newcommand{\jh}[2]{\left\{#1\,\middle\vert\,#2\right\}}
+\newcommand{\yh}[1]{``#1''}
+
+\newcommand{\lk}{\ensuremath{\mathrm{(}}}
+\newcommand{\rk}{\ensuremath{\mathrm{)}}}
+
+
+\newcommand{\fx}{\ensuremath\backslash}
+\newcommand{\dy}{\coloneqq}
+%\let\dy\triangleq
+\let\kong\varnothing
+\DeclareMathOperator{\sj}{\triangle}
+\DeclareMathOperator{\eps}{\varepsilon}
+\renewcommand{\phi}{\varphi}
+\newcommand{\shang}[1]{^{#1}}
+\newcommand{\xia}[1]{_{#1}}
+\newcommand{\sshang}[1]{{}^{#1}}
+\newcommand{\xxia}[1]{{}_{#1}}
+\newcommand*\mean[1]{\overline{#1}}
+\newcommand{\rmean}[1]{\mathpalette\doroverline{#1}}
+\newcommand{\doroverline}[2]{\overline{#1#2}}
+% 解决有上划线时上角标太低的问题
+\let\leq\leqslant
+\let\geq\geqslant
+
+\newcommand{\lp}{\ell^p}
+\newcommand{\colp}{(\ell^p)^*}
+
+\usepackage{anyfontsize}
+\usepackage{mathrsfs}  % mathscr
+
+\title{无穷维分析}
+\author{$\mathfrak{G}$}
+\date{\today}
